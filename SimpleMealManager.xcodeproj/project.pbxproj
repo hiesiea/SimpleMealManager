@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		604CAAF8231A7FA400B04451 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604CAAF7231A7FA400B04451 /* AppDelegate.swift */; };
+		604CAAFA231A7FA400B04451 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604CAAF9231A7FA400B04451 /* ViewController.swift */; };
+		604CAAFD231A7FA400B04451 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604CAAFB231A7FA400B04451 /* Main.storyboard */; };
+		604CAAFF231A7FA500B04451 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 604CAAFE231A7FA500B04451 /* Assets.xcassets */; };
+		604CAB02231A7FA500B04451 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604CAB00231A7FA500B04451 /* LaunchScreen.storyboard */; };
+		604CAB0D231A7FA500B04451 /* SimpleMealManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604CAB0C231A7FA500B04451 /* SimpleMealManagerTests.swift */; };
+		604CAB18231A7FA500B04451 /* SimpleMealManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604CAB17231A7FA500B04451 /* SimpleMealManagerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		604CAB09231A7FA500B04451 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 604CAAEC231A7FA300B04451 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 604CAAF3231A7FA300B04451;
+			remoteInfo = SimpleMealManager;
+		};
+		604CAB14231A7FA500B04451 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 604CAAEC231A7FA300B04451 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 604CAAF3231A7FA300B04451;
+			remoteInfo = SimpleMealManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		604CAAF4231A7FA400B04451 /* SimpleMealManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleMealManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		604CAAF7231A7FA400B04451 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		604CAAF9231A7FA400B04451 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		604CAAFC231A7FA400B04451 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		604CAAFE231A7FA500B04451 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		604CAB01231A7FA500B04451 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		604CAB03231A7FA500B04451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		604CAB08231A7FA500B04451 /* SimpleMealManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMealManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		604CAB0C231A7FA500B04451 /* SimpleMealManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMealManagerTests.swift; sourceTree = "<group>"; };
+		604CAB0E231A7FA500B04451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		604CAB13231A7FA500B04451 /* SimpleMealManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMealManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		604CAB17231A7FA500B04451 /* SimpleMealManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMealManagerUITests.swift; sourceTree = "<group>"; };
+		604CAB19231A7FA500B04451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		604CAAF1231A7FA300B04451 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		604CAB05231A7FA500B04451 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		604CAB10231A7FA500B04451 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		604CAAEB231A7FA300B04451 = {
+			isa = PBXGroup;
+			children = (
+				604CAAF6231A7FA400B04451 /* SimpleMealManager */,
+				604CAB0B231A7FA500B04451 /* SimpleMealManagerTests */,
+				604CAB16231A7FA500B04451 /* SimpleMealManagerUITests */,
+				604CAAF5231A7FA400B04451 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		604CAAF5231A7FA400B04451 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				604CAAF4231A7FA400B04451 /* SimpleMealManager.app */,
+				604CAB08231A7FA500B04451 /* SimpleMealManagerTests.xctest */,
+				604CAB13231A7FA500B04451 /* SimpleMealManagerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		604CAAF6231A7FA400B04451 /* SimpleMealManager */ = {
+			isa = PBXGroup;
+			children = (
+				604CAAF7231A7FA400B04451 /* AppDelegate.swift */,
+				604CAAF9231A7FA400B04451 /* ViewController.swift */,
+				604CAAFB231A7FA400B04451 /* Main.storyboard */,
+				604CAAFE231A7FA500B04451 /* Assets.xcassets */,
+				604CAB00231A7FA500B04451 /* LaunchScreen.storyboard */,
+				604CAB03231A7FA500B04451 /* Info.plist */,
+			);
+			path = SimpleMealManager;
+			sourceTree = "<group>";
+		};
+		604CAB0B231A7FA500B04451 /* SimpleMealManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				604CAB0C231A7FA500B04451 /* SimpleMealManagerTests.swift */,
+				604CAB0E231A7FA500B04451 /* Info.plist */,
+			);
+			path = SimpleMealManagerTests;
+			sourceTree = "<group>";
+		};
+		604CAB16231A7FA500B04451 /* SimpleMealManagerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				604CAB17231A7FA500B04451 /* SimpleMealManagerUITests.swift */,
+				604CAB19231A7FA500B04451 /* Info.plist */,
+			);
+			path = SimpleMealManagerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		604CAAF3231A7FA300B04451 /* SimpleMealManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 604CAB1C231A7FA500B04451 /* Build configuration list for PBXNativeTarget "SimpleMealManager" */;
+			buildPhases = (
+				604CAAF0231A7FA300B04451 /* Sources */,
+				604CAAF1231A7FA300B04451 /* Frameworks */,
+				604CAAF2231A7FA300B04451 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleMealManager;
+			productName = SimpleMealManager;
+			productReference = 604CAAF4231A7FA400B04451 /* SimpleMealManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		604CAB07231A7FA500B04451 /* SimpleMealManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 604CAB1F231A7FA500B04451 /* Build configuration list for PBXNativeTarget "SimpleMealManagerTests" */;
+			buildPhases = (
+				604CAB04231A7FA500B04451 /* Sources */,
+				604CAB05231A7FA500B04451 /* Frameworks */,
+				604CAB06231A7FA500B04451 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				604CAB0A231A7FA500B04451 /* PBXTargetDependency */,
+			);
+			name = SimpleMealManagerTests;
+			productName = SimpleMealManagerTests;
+			productReference = 604CAB08231A7FA500B04451 /* SimpleMealManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		604CAB12231A7FA500B04451 /* SimpleMealManagerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 604CAB22231A7FA500B04451 /* Build configuration list for PBXNativeTarget "SimpleMealManagerUITests" */;
+			buildPhases = (
+				604CAB0F231A7FA500B04451 /* Sources */,
+				604CAB10231A7FA500B04451 /* Frameworks */,
+				604CAB11231A7FA500B04451 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				604CAB15231A7FA500B04451 /* PBXTargetDependency */,
+			);
+			name = SimpleMealManagerUITests;
+			productName = SimpleMealManagerUITests;
+			productReference = 604CAB13231A7FA500B04451 /* SimpleMealManagerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		604CAAEC231A7FA300B04451 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = hitoshi.kamada;
+				TargetAttributes = {
+					604CAAF3231A7FA300B04451 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					604CAB07231A7FA500B04451 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 604CAAF3231A7FA300B04451;
+					};
+					604CAB12231A7FA500B04451 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 604CAAF3231A7FA300B04451;
+					};
+				};
+			};
+			buildConfigurationList = 604CAAEF231A7FA300B04451 /* Build configuration list for PBXProject "SimpleMealManager" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 604CAAEB231A7FA300B04451;
+			productRefGroup = 604CAAF5231A7FA400B04451 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				604CAAF3231A7FA300B04451 /* SimpleMealManager */,
+				604CAB07231A7FA500B04451 /* SimpleMealManagerTests */,
+				604CAB12231A7FA500B04451 /* SimpleMealManagerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		604CAAF2231A7FA300B04451 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				604CAB02231A7FA500B04451 /* LaunchScreen.storyboard in Resources */,
+				604CAAFF231A7FA500B04451 /* Assets.xcassets in Resources */,
+				604CAAFD231A7FA400B04451 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		604CAB06231A7FA500B04451 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		604CAB11231A7FA500B04451 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		604CAAF0231A7FA300B04451 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				604CAAFA231A7FA400B04451 /* ViewController.swift in Sources */,
+				604CAAF8231A7FA400B04451 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		604CAB04231A7FA500B04451 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				604CAB0D231A7FA500B04451 /* SimpleMealManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		604CAB0F231A7FA500B04451 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				604CAB18231A7FA500B04451 /* SimpleMealManagerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		604CAB0A231A7FA500B04451 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 604CAAF3231A7FA300B04451 /* SimpleMealManager */;
+			targetProxy = 604CAB09231A7FA500B04451 /* PBXContainerItemProxy */;
+		};
+		604CAB15231A7FA500B04451 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 604CAAF3231A7FA300B04451 /* SimpleMealManager */;
+			targetProxy = 604CAB14231A7FA500B04451 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		604CAAFB231A7FA400B04451 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				604CAAFC231A7FA400B04451 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		604CAB00231A7FA500B04451 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				604CAB01231A7FA500B04451 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		604CAB1A231A7FA500B04451 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		604CAB1B231A7FA500B04451 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		604CAB1D231A7FA500B04451 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B6VWA2QJ88;
+				INFOPLIST_FILE = SimpleMealManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kmdhtsh.SimpleMealManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		604CAB1E231A7FA500B04451 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B6VWA2QJ88;
+				INFOPLIST_FILE = SimpleMealManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kmdhtsh.SimpleMealManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		604CAB20231A7FA500B04451 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B6VWA2QJ88;
+				INFOPLIST_FILE = SimpleMealManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kmdhtsh.SimpleMealManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleMealManager.app/SimpleMealManager";
+			};
+			name = Debug;
+		};
+		604CAB21231A7FA500B04451 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B6VWA2QJ88;
+				INFOPLIST_FILE = SimpleMealManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kmdhtsh.SimpleMealManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleMealManager.app/SimpleMealManager";
+			};
+			name = Release;
+		};
+		604CAB23231A7FA500B04451 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B6VWA2QJ88;
+				INFOPLIST_FILE = SimpleMealManagerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kmdhtsh.SimpleMealManagerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SimpleMealManager;
+			};
+			name = Debug;
+		};
+		604CAB24231A7FA500B04451 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B6VWA2QJ88;
+				INFOPLIST_FILE = SimpleMealManagerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kmdhtsh.SimpleMealManagerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SimpleMealManager;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		604CAAEF231A7FA300B04451 /* Build configuration list for PBXProject "SimpleMealManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				604CAB1A231A7FA500B04451 /* Debug */,
+				604CAB1B231A7FA500B04451 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		604CAB1C231A7FA500B04451 /* Build configuration list for PBXNativeTarget "SimpleMealManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				604CAB1D231A7FA500B04451 /* Debug */,
+				604CAB1E231A7FA500B04451 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		604CAB1F231A7FA500B04451 /* Build configuration list for PBXNativeTarget "SimpleMealManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				604CAB20231A7FA500B04451 /* Debug */,
+				604CAB21231A7FA500B04451 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		604CAB22231A7FA500B04451 /* Build configuration list for PBXNativeTarget "SimpleMealManagerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				604CAB23231A7FA500B04451 /* Debug */,
+				604CAB24231A7FA500B04451 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 604CAAEC231A7FA300B04451 /* Project object */;
+}
