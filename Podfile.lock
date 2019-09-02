@@ -1,0 +1,30 @@
+PODS:
+  - ESTabBarController (0.2)
+  - Realm (3.15.0):
+    - Realm/Headers (= 3.15.0)
+  - Realm/Headers (3.15.0)
+  - RealmSwift (3.15.0):
+    - Realm (= 3.15.0)
+  - SVProgressHUD (2.2.5)
+
+DEPENDENCIES:
+  - ESTabBarController (= 0.2)
+  - RealmSwift (= 3.15.0)
+  - SVProgressHUD (= 2.2.5)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ESTabBarController
+    - Realm
+    - RealmSwift
+    - SVProgressHUD
+
+SPEC CHECKSUMS:
+  ESTabBarController: e82ac0b135bec16fb646ac1da4ac8953fcd927da
+  Realm: 9b834e1be6062f544805252c812348872dc5d4ed
+  RealmSwift: 8a41886f8ab6efef9eb8df97de2f2bb911561a79
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+
+PODFILE CHECKSUM: 4f251a9275c551d52c59a93ef16d50507b3c889b
+
+COCOAPODS: 1.7.5
