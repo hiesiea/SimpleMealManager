@@ -1,30 +1,119 @@
 PODS:
   - ESTabBarController (0.2)
-  - Realm (3.15.0):
-    - Realm/Headers (= 3.15.0)
-  - Realm/Headers (3.15.0)
-  - RealmSwift (3.15.0):
-    - Realm (= 3.15.0)
+  - Firebase (6.1.0):
+    - Firebase/Core (= 6.1.0)
+  - Firebase/Auth (6.1.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (~> 6.1.0)
+  - Firebase/Core (6.1.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 6.0.1)
+  - Firebase/CoreOnly (6.1.0):
+    - FirebaseCore (= 6.0.1)
+  - Firebase/Database (6.1.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (~> 6.0.0)
+  - FirebaseAnalytics (6.0.1):
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.1)
+    - GoogleAppMeasurement (= 6.0.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 0.3)
+  - FirebaseAuth (6.1.2):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.2)
+    - GoogleUtilities/Environment (~> 6.2)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseAuthInterop (1.0.0)
+  - FirebaseCore (6.0.1):
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/Logger (~> 6.0)
+  - FirebaseDatabase (6.0.0):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+    - leveldb-library (~> 1.18)
+  - FirebaseInstanceID (4.2.3):
+    - FirebaseCore (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/UserDefaults (~> 6.0)
+  - GoogleAppMeasurement (6.0.1):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 0.3)
+  - GoogleUtilities/AppDelegateSwizzler (6.2.4):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.2.4)
+  - GoogleUtilities/Logger (6.2.4):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.2.4):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.2.4):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.2.4)"
+  - GoogleUtilities/Reachability (6.2.4):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.2.4):
+    - GoogleUtilities/Logger
+  - GTMSessionFetcher/Core (1.2.2)
+  - leveldb-library (1.20)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - ESTabBarController (= 0.2)
-  - RealmSwift (= 3.15.0)
+  - Firebase (= 6.1.0)
+  - Firebase/Auth
+  - Firebase/Core
+  - Firebase/Database
   - SVProgressHUD (= 2.2.5)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ESTabBarController
-    - Realm
-    - RealmSwift
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAuth
+    - FirebaseAuthInterop
+    - FirebaseCore
+    - FirebaseDatabase
+    - FirebaseInstanceID
+    - GoogleAppMeasurement
+    - GoogleUtilities
+    - GTMSessionFetcher
+    - leveldb-library
+    - nanopb
     - SVProgressHUD
 
 SPEC CHECKSUMS:
   ESTabBarController: e82ac0b135bec16fb646ac1da4ac8953fcd927da
-  Realm: 9b834e1be6062f544805252c812348872dc5d4ed
-  RealmSwift: 8a41886f8ab6efef9eb8df97de2f2bb911561a79
+  Firebase: 8d77bb33624ae9b62d745d82ec023de5f70f7e4f
+  FirebaseAnalytics: 629301c2b9925f3537d4093a17a72751ae5b7084
+  FirebaseAuth: 7fa2cc010b93770831a4e7a60651b52c3b8d111a
+  FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
+  FirebaseCore: 66bdef3b310a026880e2a5bc8aa586ab62ce4543
+  FirebaseDatabase: f48e067716864be2b855cf716b927ef375d6cfa0
+  FirebaseInstanceID: 8b42755db950682e7de0d167bc6fb26a57b244af
+  GoogleAppMeasurement: 51d8d9ea48f0ca44484d29cfbdef976fbd4fc336
+  GoogleUtilities: 64b5e3982b1b01bda26712affd5c523ef32563cf
+  GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 4f251a9275c551d52c59a93ef16d50507b3c889b
+PODFILE CHECKSUM: 0f9893d5ece375ce58a2e6dbfd247b346bfc6a18
 
 COCOAPODS: 1.7.5

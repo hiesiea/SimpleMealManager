@@ -8,7 +8,10 @@ target 'SimpleMealManager' do
   # Pods for SimpleMealManager
   pod 'ESTabBarController', '0.2'
   pod 'SVProgressHUD', '2.2.5'
-  pod 'RealmSwift', '3.15.0'
+  pod 'Firebase','6.1.0'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
   target 'SimpleMealManagerTests' do
     inherit! :search_paths

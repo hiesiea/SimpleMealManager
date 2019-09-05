@@ -8,10 +8,11 @@
 
 import ESTabBarController
 import UIKit
+import Photos
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     private let homeViewController: UIViewController? = {
-        // タブをタップした時に表示するViewControllerを設定する
+        // ViewControllerを設定する
         let homeStoryBoard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let viewController = homeStoryBoard.instantiateInitialViewController()
         return viewController
@@ -50,11 +51,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // 真ん中のタブはボタンとして扱う
         tabBarController.highlightButton(at: 1)
         tabBarController.setAction({
-            // ボタンが押されたらカメラを指定してピッカーを開く
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            // ボタンが押されたらフォトライブラリを指定してピッカーを開く
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 let pickerController = UIImagePickerController()
                 pickerController.delegate = self
-                pickerController.sourceType = .camera
+                pickerController.sourceType = .photoLibrary
                 self.present(pickerController, animated: true, completion: nil)
             }
             
@@ -63,15 +64,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // 写真を撮影/選択したときに呼ばれるメソッド
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if info[.originalImage] != nil {
-            // 撮影された画像を取得する
-            let image = info[.originalImage] as! UIImage
-            
-            // 画像を登録
-            
-            // 閉じる
-            picker.dismiss(animated: true, completion: nil)
+        
+        if info[.imageURL] != nil {
+            let imageURL = info[.imageURL] as! NSURL
+            print("DEBUG_PRINT: imageURL = \(imageURL)")
         }
+        // 閉じる
+        picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

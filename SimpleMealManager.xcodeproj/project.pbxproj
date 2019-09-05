@@ -19,7 +19,8 @@
 		604CAB0D231A7FA500B04451 /* SimpleMealManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604CAB0C231A7FA500B04451 /* SimpleMealManagerTests.swift */; };
 		604CAB18231A7FA500B04451 /* SimpleMealManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604CAB17231A7FA500B04451 /* SimpleMealManagerUITests.swift */; };
 		604CAB26231A85C200B04451 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604CAB25231A85C200B04451 /* Home.storyboard */; };
-		60BFE39C231E900600FA1558 /* MealInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BFE39B231E900600FA1558 /* MealInfo.swift */; };
+		60AA48742321572300EBEB57 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60AA48732321572300EBEB57 /* GoogleService-Info.plist */; };
+		60B251872321299F009E108D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B251862321299F009E108D /* HomeViewController.swift */; };
 		F12E6AEEBF0533C73B0BCBC7 /* Pods_SimpleMealManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E4F3E7435565A975B2C143A /* Pods_SimpleMealManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,7 +62,8 @@
 		604CAB17231A7FA500B04451 /* SimpleMealManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMealManagerUITests.swift; sourceTree = "<group>"; };
 		604CAB19231A7FA500B04451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		604CAB25231A85C200B04451 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		60BFE39B231E900600FA1558 /* MealInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealInfo.swift; sourceTree = "<group>"; };
+		60AA48732321572300EBEB57 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		60B251862321299F009E108D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		62976D5E8D393F4080B8EC2E /* Pods-SimpleMealManagerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleMealManagerUITests.debug.xcconfig"; path = "Target Support Files/Pods-SimpleMealManagerUITests/Pods-SimpleMealManagerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6348F79937523E80ECC62DFF /* Pods_SimpleMealManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleMealManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F65D0AA1B6E015E13FC515 /* Pods-SimpleMealManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleMealManager.debug.xcconfig"; path = "Target Support Files/Pods-SimpleMealManager/Pods-SimpleMealManager.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,7 +156,8 @@
 				604CAB25231A85C200B04451 /* Home.storyboard */,
 				600C3E12231D44C3003AC939 /* Detail.storyboard */,
 				600C3E14231D44D9003AC939 /* Edit.storyboard */,
-				60BFE39B231E900600FA1558 /* MealInfo.swift */,
+				60AA48732321572300EBEB57 /* GoogleService-Info.plist */,
+				60B251862321299F009E108D /* HomeViewController.swift */,
 			);
 			path = SimpleMealManager;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				600C3E13231D44C3003AC939 /* Detail.storyboard in Resources */,
 				600C3E15231D44D9003AC939 /* Edit.storyboard in Resources */,
 				604CAB26231A85C200B04451 /* Home.storyboard in Resources */,
+				60AA48742321572300EBEB57 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,9 +405,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60BFE39C231E900600FA1558 /* MealInfo.swift in Sources */,
 				604CAAFA231A7FA400B04451 /* ViewController.swift in Sources */,
 				604CAAF8231A7FA400B04451 /* AppDelegate.swift in Sources */,
+				60B251872321299F009E108D /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
