@@ -11,6 +11,10 @@
 		24E7ACE3B2405ED36C9B11F8 /* Pods_SimpleMealManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6348F79937523E80ECC62DFF /* Pods_SimpleMealManagerUITests.framework */; };
 		600C3E13231D44C3003AC939 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 600C3E12231D44C3003AC939 /* Detail.storyboard */; };
 		600C3E15231D44D9003AC939 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 600C3E14231D44D9003AC939 /* Edit.storyboard */; };
+		60143057232276F600972D6A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60143056232276F600972D6A /* DetailViewController.swift */; };
+		601430592322772F00972D6A /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601430582322772F00972D6A /* EditViewController.swift */; };
+		6014305B2322775800972D6A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6014305A2322775800972D6A /* Login.storyboard */; };
+		6014305D2322776800972D6A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6014305C2322776800972D6A /* LoginViewController.swift */; };
 		604CAAF8231A7FA400B04451 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604CAAF7231A7FA400B04451 /* AppDelegate.swift */; };
 		604CAAFA231A7FA400B04451 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604CAAF9231A7FA400B04451 /* ViewController.swift */; };
 		604CAAFD231A7FA400B04451 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604CAAFB231A7FA400B04451 /* Main.storyboard */; };
@@ -48,6 +52,10 @@
 		48930FE3AFC50B9F6FCBBD4B /* Pods-SimpleMealManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleMealManagerTests.release.xcconfig"; path = "Target Support Files/Pods-SimpleMealManagerTests/Pods-SimpleMealManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 		600C3E12231D44C3003AC939 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		600C3E14231D44D9003AC939 /* Edit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
+		60143056232276F600972D6A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		601430582322772F00972D6A /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		6014305A2322775800972D6A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		6014305C2322776800972D6A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		604CAAF4231A7FA400B04451 /* SimpleMealManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleMealManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		604CAAF7231A7FA400B04451 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		604CAAF9231A7FA400B04451 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +166,10 @@
 				600C3E14231D44D9003AC939 /* Edit.storyboard */,
 				60AA48732321572300EBEB57 /* GoogleService-Info.plist */,
 				60B251862321299F009E108D /* HomeViewController.swift */,
+				60143056232276F600972D6A /* DetailViewController.swift */,
+				601430582322772F00972D6A /* EditViewController.swift */,
+				6014305A2322775800972D6A /* Login.storyboard */,
+				6014305C2322776800972D6A /* LoginViewController.swift */,
 			);
 			path = SimpleMealManager;
 			sourceTree = "<group>";
@@ -288,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6014305B2322775800972D6A /* Login.storyboard in Resources */,
 				604CAB02231A7FA500B04451 /* LaunchScreen.storyboard in Resources */,
 				604CAAFF231A7FA500B04451 /* Assets.xcassets in Resources */,
 				604CAAFD231A7FA400B04451 /* Main.storyboard in Resources */,
@@ -405,9 +418,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6014305D2322776800972D6A /* LoginViewController.swift in Sources */,
+				601430592322772F00972D6A /* EditViewController.swift in Sources */,
 				604CAAFA231A7FA400B04451 /* ViewController.swift in Sources */,
 				604CAAF8231A7FA400B04451 /* AppDelegate.swift in Sources */,
 				60B251872321299F009E108D /* HomeViewController.swift in Sources */,
+				60143057232276F600972D6A /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
