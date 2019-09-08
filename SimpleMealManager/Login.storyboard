@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YZs-eN-4th">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,9 +17,63 @@
                     <view key="view" contentMode="scaleToFill" id="Lk7-cf-8Zg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jWh-s5-2Rz">
+                                <rect key="frame" x="37.5" y="100" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="m7J-78-nKt"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Hg-Gf-jIX">
+                                <rect key="frame" x="37.5" y="140" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ule-Yq-9oy"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4M-rq-Q48">
+                                <rect key="frame" x="37.5" y="180" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Uvy-24-sd9"/>
+                                </constraints>
+                                <state key="normal" title="ログイン"/>
+                                <connections>
+                                    <action selector="handleLoginButton:" destination="YZs-eN-4th" eventType="touchUpInside" id="nG9-7d-Nps"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KO4-OQ-vZB">
+                                <rect key="frame" x="37.5" y="220" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="DFa-PG-RMC"/>
+                                </constraints>
+                                <state key="normal" title="アカウント作成"/>
+                                <connections>
+                                    <action selector="handleCreateAccountButton:" destination="YZs-eN-4th" eventType="touchUpInside" id="XPi-82-e4h"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jWh-s5-2Rz" firstAttribute="top" secondItem="AIe-FH-NLi" secondAttribute="top" constant="80" id="DyE-lI-xFS"/>
+                            <constraint firstItem="KO4-OQ-vZB" firstAttribute="top" secondItem="Q4M-rq-Q48" secondAttribute="bottom" constant="10" id="MpJ-AG-mYX"/>
+                            <constraint firstItem="Q4M-rq-Q48" firstAttribute="top" secondItem="5Hg-Gf-jIX" secondAttribute="bottom" constant="10" id="QV0-Jb-ShP"/>
+                            <constraint firstItem="Q4M-rq-Q48" firstAttribute="centerX" secondItem="Lk7-cf-8Zg" secondAttribute="centerX" id="VvQ-AG-eat"/>
+                            <constraint firstItem="5Hg-Gf-jIX" firstAttribute="top" secondItem="jWh-s5-2Rz" secondAttribute="bottom" constant="10" id="b6g-uk-ny7"/>
+                            <constraint firstItem="KO4-OQ-vZB" firstAttribute="centerX" secondItem="Lk7-cf-8Zg" secondAttribute="centerX" id="c92-8I-dWs"/>
+                            <constraint firstItem="5Hg-Gf-jIX" firstAttribute="centerX" secondItem="Lk7-cf-8Zg" secondAttribute="centerX" id="fPU-ec-56X"/>
+                            <constraint firstItem="jWh-s5-2Rz" firstAttribute="centerX" secondItem="Lk7-cf-8Zg" secondAttribute="centerX" id="uf3-pk-9N2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="AIe-FH-NLi"/>
                     </view>
+                    <connections>
+                        <outlet property="mailAddressTextField" destination="jWh-s5-2Rz" id="eeA-qq-6Iq"/>
+                        <outlet property="passwordTextField" destination="5Hg-Gf-jIX" id="HWN-6k-ueL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Dm-yV-uCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

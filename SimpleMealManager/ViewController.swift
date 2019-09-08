@@ -8,7 +8,8 @@
 
 import ESTabBarController
 import UIKit
-import Photos
+import Firebase
+import SVProgressHUD
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     private let homeViewController: UIViewController? = {
@@ -17,6 +18,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let viewController = homeStoryBoard.instantiateInitialViewController()
         return viewController
     }()
+    
+    private let loginViewController: UIViewController? = {
+        // ViewControllerを設定する
+        let loginStoryBoard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        let viewController = loginStoryBoard.instantiateInitialViewController()
+        return viewController
+    }()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // currentUserがnilならログインしていない
+        if Auth.auth().currentUser == nil {
+            // ログインしていないときの処理
+            self.present(loginViewController!, animated: true, completion: nil)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +69,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // 真ん中のタブはボタンとして扱う
         tabBarController.highlightButton(at: 1)
         tabBarController.setAction({
-            // ボタンが押されたらフォトライブラリを指定してピッカーを開く
+            // ライブラリ（カメラロール）を指定してピッカーを開く
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 let pickerController = UIImagePickerController()
                 pickerController.delegate = self
@@ -62,19 +80,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }, at: 1)
     }
     
-    // 写真を撮影/選択したときに呼ばれるメソッド
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if info[.imageURL] != nil {
-            let imageURL = info[.imageURL] as! NSURL
-            print("DEBUG_PRINT: imageURL = \(imageURL)")
+        if info[.originalImage] != nil {
+            let image = info[.originalImage] as! UIImage
+            print("DEBUG_PRINT: image = \(image)")
+            
+            let imageData = image.jpegData(compressionQuality: 0.5)
+            let imageString = imageData!.base64EncodedString(options: .lineLength64Characters)
+            
+            // postDataに必要な情報を取得しておく
+            let time = Date.timeIntervalSinceReferenceDate
+            
+            // 辞書を作成してFirebaseに保存する
+            let postRef = Database.database().reference().child(Const.PostPath)
+            let postDic = ["image": imageString, "time": String(time), "comment": String()]
+            postRef.childByAutoId().setValue(postDic)
+            
+            SVProgressHUD.showSuccess(withStatus: "投稿しました")
+        } else {
+            SVProgressHUD.showSuccess(withStatus: "投稿に失敗しました")
         }
-        // 閉じる
         picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        // 閉じる
         picker.dismiss(animated: true, completion: nil)
     }
 }
