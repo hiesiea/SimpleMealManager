@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
             
             // アドレスとパスワード名のいずれかでも入力されていない時は何もしない
             if address.isEmpty || password.isEmpty {
-                SVProgressHUD.showError(withStatus: "必要項目を入力して下さい")
+                SVProgressHUD.showError(withStatus: "必要項目を入力してください")
                 return
             }
             
@@ -29,10 +29,10 @@ class LoginViewController: UIViewController {
             Auth.auth().signIn(withEmail: address, password: password) { user, error in
                 if let error = error {
                     print("DEBUG_PRINT: " + error.localizedDescription)
-                    SVProgressHUD.showError(withStatus: "サインインに失敗しました。")
+                    SVProgressHUD.showError(withStatus: "サインインに失敗しました")
                     return
                 }
-                print("DEBUG_PRINT: ログインに成功しました。")
+                print("DEBUG_PRINT: ログインに成功しました")
                 
                 // HUDを消す
                 SVProgressHUD.dismiss()
@@ -48,8 +48,8 @@ class LoginViewController: UIViewController {
             
             // アドレスとパスワードと表示名のいずれかでも入力されていない時は何もしない
             if mailAddress.isEmpty || password.isEmpty {
-                print("DEBUG_PRINT: 何かが空文字です。")
-                SVProgressHUD.showError(withStatus: "必要項目を入力して下さい")
+                print("DEBUG_PRINT: 何かが空文字です")
+                SVProgressHUD.showError(withStatus: "必要項目を入力してください")
                 return
             }
             
@@ -61,10 +61,10 @@ class LoginViewController: UIViewController {
                 if let error = error {
                     // エラーがあったら原因をprintして、returnすることで以降の処理を実行せずに処理を終了する
                     print("DEBUG_PRINT: " + error.localizedDescription)
-                    SVProgressHUD.showError(withStatus: "ユーザー作成に失敗しました。")
+                    SVProgressHUD.showError(withStatus: "ユーザー作成に失敗しました")
                     return
                 }
-                print("DEBUG_PRINT: ユーザー作成に成功しました。")
+                print("DEBUG_PRINT: ユーザー作成に成功しました")
                 
                 // HUDを消す
                 SVProgressHUD.dismiss()

@@ -48,6 +48,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         setupTab()
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if info[.originalImage] != nil {
+            let image = info[.originalImage] as! UIImage
+            print("DEBUG_PRINT: image = \(image)")
+            
+            let imageData = image.jpegData(compressionQuality: 0.5)
+            let imageString = imageData!.base64EncodedString(options: .lineLength64Characters)
+            
+            // postDataに必要な情報を取得しておく
+            let time = Date.timeIntervalSinceReferenceDate
+            
+            // 辞書を作成してFirebaseに保存する
+            let postRef = Database.database().reference().child(Const.PostPath)
+            let postDic = ["image": imageString, "time": String(time), "comment": String()]
+            postRef.childByAutoId().setValue(postDic)
+            
+            SVProgressHUD.showSuccess(withStatus: "投稿しました")
+        } else {
+            SVProgressHUD.showSuccess(withStatus: "投稿に失敗しました")
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
     private func setupTab() {
         // 画像のファイル名を指定してESTabBarControllerを作成する
         let tabBarController: ESTabBarController! = ESTabBarController(tabIconNames: ["home", "photo", "photo"])
@@ -78,48 +106,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         tabBarController.highlightButton(at: 1)
         tabBarController.setAction({
             self.displayAlert()
-            
-            // ライブラリ（カメラロール）を指定してピッカーを開く
-//            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-//                let pickerController = UIImagePickerController()
-//                pickerController.delegate = self
-//                pickerController.sourceType = .photoLibrary
-//                self.present(pickerController, animated: true, completion: nil)
-//            }
         }, at: 1)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        if info[.originalImage] != nil {
-            let image = info[.originalImage] as! UIImage
-            print("DEBUG_PRINT: image = \(image)")
-            
-            let imageData = image.jpegData(compressionQuality: 0.5)
-            let imageString = imageData!.base64EncodedString(options: .lineLength64Characters)
-            
-            // postDataに必要な情報を取得しておく
-            let time = Date.timeIntervalSinceReferenceDate
-            
-            // 辞書を作成してFirebaseに保存する
-            let postRef = Database.database().reference().child(Const.PostPath)
-            let postDic = ["image": imageString, "time": String(time), "comment": String()]
-            postRef.childByAutoId().setValue(postDic)
-            
-            SVProgressHUD.showSuccess(withStatus: "投稿しました")
-        } else {
-            SVProgressHUD.showSuccess(withStatus: "投稿に失敗しました")
-        }
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
     }
     
     private func displayAlert() {
         let alert: UIAlertController = UIAlertController(title: "投稿", message: "投稿方法を選択してください", preferredStyle:  UIAlertController.Style.actionSheet)
-        
         let photoLibraryAction: UIAlertAction = UIAlertAction(title: "フォトライブラリ", style: UIAlertAction.Style.default, handler:{
             (action: UIAlertAction!) -> Void in
             // ライブラリ（カメラロール）を指定してピッカーを開く
@@ -140,18 +131,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 self.present(pickerController, animated: true, completion: nil)
             }
         })
-        
-        // Cancelボタン
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
             (action: UIAlertAction!) -> Void in
         })
         
-        // ③ UIAlertControllerにActionを追加
         alert.addAction(photoLibraryAction)
         alert.addAction(cameraAction)
         alert.addAction(cancelAction)
         
-        // ④ Alertを表示
         self.present(alert, animated: true, completion: nil)
     }
 }
