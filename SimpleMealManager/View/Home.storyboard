@@ -35,12 +35,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="153" height="131"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AaJ-XY-mhT">
-                                                    <rect key="frame" x="7" y="0.0" width="151" height="127"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AaJ-XY-mhT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="153" height="131"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="AaJ-XY-mhT" firstAttribute="leading" secondItem="Qf7-Iu-3uj" secondAttribute="leading" id="69W-Le-aAx"/>
+                                            <constraint firstAttribute="trailing" secondItem="AaJ-XY-mhT" secondAttribute="trailing" id="H2j-P7-Eo3"/>
+                                            <constraint firstItem="AaJ-XY-mhT" firstAttribute="top" secondItem="Qf7-Iu-3uj" secondAttribute="top" id="dHs-kU-m6S"/>
+                                            <constraint firstAttribute="bottom" secondItem="AaJ-XY-mhT" secondAttribute="bottom" id="mqz-yI-RNc"/>
+                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

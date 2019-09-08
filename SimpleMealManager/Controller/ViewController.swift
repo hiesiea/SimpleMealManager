@@ -77,14 +77,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // 真ん中のタブはボタンとして扱う
         tabBarController.highlightButton(at: 1)
         tabBarController.setAction({
+            self.displayAlert()
             
             // ライブラリ（カメラロール）を指定してピッカーを開く
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                let pickerController = UIImagePickerController()
-                pickerController.delegate = self
-                pickerController.sourceType = .photoLibrary
-                self.present(pickerController, animated: true, completion: nil)
-            }
+//            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+//                let pickerController = UIImagePickerController()
+//                pickerController.delegate = self
+//                pickerController.sourceType = .photoLibrary
+//                self.present(pickerController, animated: true, completion: nil)
+//            }
         }, at: 1)
     }
     
@@ -114,5 +115,43 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    private func displayAlert() {
+        let alert: UIAlertController = UIAlertController(title: "投稿", message: "投稿方法を選択してください", preferredStyle:  UIAlertController.Style.actionSheet)
+        
+        let photoLibraryAction: UIAlertAction = UIAlertAction(title: "フォトライブラリ", style: UIAlertAction.Style.default, handler:{
+            (action: UIAlertAction!) -> Void in
+            // ライブラリ（カメラロール）を指定してピッカーを開く
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                let pickerController = UIImagePickerController()
+                pickerController.delegate = self
+                pickerController.sourceType = .photoLibrary
+                self.present(pickerController, animated: true, completion: nil)
+            }
+        })
+        let cameraAction: UIAlertAction = UIAlertAction(title: "カメラ", style: UIAlertAction.Style.default, handler:{
+            (action: UIAlertAction!) -> Void in
+            // カメラを指定してピッカーを開く
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let pickerController = UIImagePickerController()
+                pickerController.delegate = self
+                pickerController.sourceType = .camera
+                self.present(pickerController, animated: true, completion: nil)
+            }
+        })
+        
+        // Cancelボタン
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+            (action: UIAlertAction!) -> Void in
+        })
+        
+        // ③ UIAlertControllerにActionを追加
+        alert.addAction(photoLibraryAction)
+        alert.addAction(cameraAction)
+        alert.addAction(cancelAction)
+        
+        // ④ Alertを表示
+        self.present(alert, animated: true, completion: nil)
     }
 }
