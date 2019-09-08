@@ -26,13 +26,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return viewController
     }()
     
+    private let settingViewController: UIViewController? = {
+        // ViewControllerを設定する
+        let loginStoryBoard: UIStoryboard = UIStoryboard(name: "Setting", bundle: nil)
+        let viewController = loginStoryBoard.instantiateInitialViewController()
+        return viewController
+    }()
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // currentUserがnilならログインしていない
         if Auth.auth().currentUser == nil {
             // ログインしていないときの処理
-            self.present(loginViewController!, animated: true, completion: nil)
+            self.present(self.loginViewController!, animated: true, completion: nil)
         }
     }
     
@@ -43,7 +50,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     private func setupTab() {
         // 画像のファイル名を指定してESTabBarControllerを作成する
-        let tabBarController: ESTabBarController! = ESTabBarController(tabIconNames: ["home", "photo"])
+        let tabBarController: ESTabBarController! = ESTabBarController(tabIconNames: ["home", "photo", "photo"])
         
         // 背景色、選択時の色を設定する
         tabBarController.selectedColor = UIColor(red: 1.0, green: 0.44, blue: 0.11, alpha: 1)
@@ -64,11 +71,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             ])
         tabBarController.didMove(toParent: self)
         
-        tabBarController.setView(homeViewController, at: 0)
+        tabBarController.setView(self.homeViewController, at: 0)
+        tabBarController.setView(self.settingViewController, at: 2)
         
         // 真ん中のタブはボタンとして扱う
         tabBarController.highlightButton(at: 1)
         tabBarController.setAction({
+            
             // ライブラリ（カメラロール）を指定してピッカーを開く
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 let pickerController = UIImagePickerController()
@@ -76,7 +85,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 pickerController.sourceType = .photoLibrary
                 self.present(pickerController, animated: true, completion: nil)
             }
-            
         }, at: 1)
     }
     
