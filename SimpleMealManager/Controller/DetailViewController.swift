@@ -7,24 +7,42 @@
 //
 
 import UIKit
+import Firebase
 
 class DetailViewController: UIViewController {
-
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var commentTextView: UITextView!
+    
+    var selectedPost: PostData? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if selectedPost != nil {
+            imageView.image = selectedPost?.image
+            commentTextView.text = selectedPost?.comment
+        }
+        
+        let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.edit, target: self, action: #selector(handleEditButton(_:)))
+        
+        //ナビゲーションバーの右側にボタン付与
+        self.navigationItem.setRightBarButtonItems([editButton], animated: true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "Edit" {
+            let editViewController = segue.destination as! EditViewController
+            editViewController.selectedPost = sender as? PostData
+        }
     }
-    */
-
+    
+    @IBAction func handleDeleteButton(_ sender: Any) {
+        Database.database().reference().child(Const.PostPath).child(selectedPost!.id!).removeValue()
+        print("\(selectedPost!.id!)を削除")
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc func handleEditButton(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "Edit", sender: self.selectedPost)
+    }
 }

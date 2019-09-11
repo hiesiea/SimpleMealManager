@@ -19,7 +19,7 @@ class SettingViewController: UIViewController {
         let viewController = loginStoryBoard.instantiateInitialViewController()
         return viewController
     }()
-
+    
     @IBAction func handleLogoutButton(_ sender: Any) {
         // ログアウトする
         try! Auth.auth().signOut()

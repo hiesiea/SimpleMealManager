@@ -13,21 +13,19 @@
 		6038B18C23252B3E001F22F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6038B18623252B3E001F22F1 /* ViewController.swift */; };
 		6038B18D23252B3E001F22F1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6038B18723252B3E001F22F1 /* DetailViewController.swift */; };
 		6038B18E23252B3E001F22F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6038B18823252B3E001F22F1 /* HomeViewController.swift */; };
-		6038B18F23252B3E001F22F1 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6038B18923252B3E001F22F1 /* EditViewController.swift */; };
 		6038B19023252B3E001F22F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6038B18A23252B3E001F22F1 /* LoginViewController.swift */; };
 		6038B19423252B4B001F22F1 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6038B19223252B4B001F22F1 /* Const.swift */; };
 		6038B19523252B4B001F22F1 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6038B19323252B4B001F22F1 /* PostData.swift */; };
 		6038B19C23252B59001F22F1 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6038B19723252B59001F22F1 /* Setting.storyboard */; };
-		6038B19D23252B59001F22F1 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6038B19823252B59001F22F1 /* Detail.storyboard */; };
 		6038B19E23252B59001F22F1 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6038B19923252B59001F22F1 /* Home.storyboard */; };
 		6038B19F23252B59001F22F1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6038B19A23252B59001F22F1 /* Login.storyboard */; };
-		6038B1A023252B59001F22F1 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6038B19B23252B59001F22F1 /* Edit.storyboard */; };
 		604CAAF8231A7FA400B04451 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604CAAF7231A7FA400B04451 /* AppDelegate.swift */; };
 		604CAAFD231A7FA400B04451 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604CAAFB231A7FA400B04451 /* Main.storyboard */; };
 		604CAAFF231A7FA500B04451 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 604CAAFE231A7FA500B04451 /* Assets.xcassets */; };
 		604CAB02231A7FA500B04451 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604CAB00231A7FA500B04451 /* LaunchScreen.storyboard */; };
 		604CAB0D231A7FA500B04451 /* SimpleMealManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604CAB0C231A7FA500B04451 /* SimpleMealManagerTests.swift */; };
 		604CAB18231A7FA500B04451 /* SimpleMealManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604CAB17231A7FA500B04451 /* SimpleMealManagerUITests.swift */; };
+		6080D43E2327E058000C1EC3 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080D43D2327E058000C1EC3 /* EditViewController.swift */; };
 		60AA48742321572300EBEB57 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60AA48732321572300EBEB57 /* GoogleService-Info.plist */; };
 		F12E6AEEBF0533C73B0BCBC7 /* Pods_SimpleMealManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E4F3E7435565A975B2C143A /* Pods_SimpleMealManager.framework */; };
 /* End PBXBuildFile section */
@@ -58,15 +56,12 @@
 		6038B18623252B3E001F22F1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6038B18723252B3E001F22F1 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		6038B18823252B3E001F22F1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		6038B18923252B3E001F22F1 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		6038B18A23252B3E001F22F1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6038B19223252B4B001F22F1 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		6038B19323252B4B001F22F1 /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		6038B19723252B59001F22F1 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
-		6038B19823252B59001F22F1 /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		6038B19923252B59001F22F1 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		6038B19A23252B59001F22F1 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		6038B19B23252B59001F22F1 /* Edit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
 		604CAAF4231A7FA400B04451 /* SimpleMealManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleMealManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		604CAAF7231A7FA400B04451 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		604CAAFC231A7FA400B04451 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,6 +74,7 @@
 		604CAB13231A7FA500B04451 /* SimpleMealManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMealManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		604CAB17231A7FA500B04451 /* SimpleMealManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMealManagerUITests.swift; sourceTree = "<group>"; };
 		604CAB19231A7FA500B04451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6080D43D2327E058000C1EC3 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		60AA48732321572300EBEB57 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		62976D5E8D393F4080B8EC2E /* Pods-SimpleMealManagerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleMealManagerUITests.debug.xcconfig"; path = "Target Support Files/Pods-SimpleMealManagerUITests/Pods-SimpleMealManagerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6348F79937523E80ECC62DFF /* Pods_SimpleMealManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleMealManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,8 +141,8 @@
 				6038B18623252B3E001F22F1 /* ViewController.swift */,
 				6038B18723252B3E001F22F1 /* DetailViewController.swift */,
 				6038B18823252B3E001F22F1 /* HomeViewController.swift */,
-				6038B18923252B3E001F22F1 /* EditViewController.swift */,
 				6038B18A23252B3E001F22F1 /* LoginViewController.swift */,
+				6080D43D2327E058000C1EC3 /* EditViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -164,10 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				6038B19723252B59001F22F1 /* Setting.storyboard */,
-				6038B19823252B59001F22F1 /* Detail.storyboard */,
 				6038B19923252B59001F22F1 /* Home.storyboard */,
 				6038B19A23252B59001F22F1 /* Login.storyboard */,
-				6038B19B23252B59001F22F1 /* Edit.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -340,11 +334,9 @@
 				6038B19E23252B59001F22F1 /* Home.storyboard in Resources */,
 				604CAB02231A7FA500B04451 /* LaunchScreen.storyboard in Resources */,
 				604CAAFF231A7FA500B04451 /* Assets.xcassets in Resources */,
-				6038B1A023252B59001F22F1 /* Edit.storyboard in Resources */,
 				6038B19C23252B59001F22F1 /* Setting.storyboard in Resources */,
 				604CAAFD231A7FA400B04451 /* Main.storyboard in Resources */,
 				60AA48742321572300EBEB57 /* GoogleService-Info.plist in Resources */,
-				6038B19D23252B59001F22F1 /* Detail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,11 +451,11 @@
 				6038B19523252B4B001F22F1 /* PostData.swift in Sources */,
 				6038B18E23252B3E001F22F1 /* HomeViewController.swift in Sources */,
 				6038B18C23252B3E001F22F1 /* ViewController.swift in Sources */,
-				6038B18F23252B3E001F22F1 /* EditViewController.swift in Sources */,
 				604CAAF8231A7FA400B04451 /* AppDelegate.swift in Sources */,
 				6038B19423252B4B001F22F1 /* Const.swift in Sources */,
 				6038B18B23252B3E001F22F1 /* SettingViewController.swift in Sources */,
 				6038B18D23252B3E001F22F1 /* DetailViewController.swift in Sources */,
+				6080D43E2327E058000C1EC3 /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

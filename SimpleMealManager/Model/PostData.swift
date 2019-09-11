@@ -18,6 +18,7 @@ class PostData: NSObject {
     
     init(snapshot: DataSnapshot, myId: String) {
         self.id = snapshot.key
+        print("snapshot.key = \(snapshot.key), myId = \(myId)")
         
         let valueDictionary = snapshot.value as! [String: Any]
         
@@ -28,5 +29,17 @@ class PostData: NSObject {
         
         let time = valueDictionary["time"] as? String
         self.date = Date(timeIntervalSinceReferenceDate: TimeInterval(time!)!)
+    }
+    
+    func formatDatetoString() -> String {
+        if self.date == nil {
+            return ""
+        }
+        
+        let f = DateFormatter()
+        f.dateStyle = .long
+        f.timeStyle = .medium
+        f.locale = Locale(identifier: "ja_JP")
+        return f.string(from: self.date!)
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -44,6 +45,29 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     if let uid = Auth.auth().currentUser?.uid {
                         let postData = PostData(snapshot: snapshot, myId: uid)
                         self.postArray.insert(postData, at: 0)
+                        
+                        // TableViewを再表示する
+                        self.collectionView.reloadData()
+                    }
+                })
+                postsRef.observe(.childRemoved, with: { snapshot in
+                    print("DEBUG_PRINT: .childRemovedイベントが発生しました")
+                    // PostDataクラスを生成して受け取ったデータを設定する
+                    if let uid = Auth.auth().currentUser?.uid {
+                        // PostDataクラスを生成して受け取ったデータを設定する
+                        let postData = PostData(snapshot: snapshot, myId: uid)
+                        
+                        // 保持している配列からidが同じものを探す
+                        var index: Int = 0
+                        for post in self.postArray {
+                            if post.id == postData.id {
+                                index = self.postArray.firstIndex(of: post)!
+                                break
+                            }
+                        }
+                        
+                        // 削除する
+                        self.postArray.remove(at: index)
                         
                         // TableViewを再表示する
                         self.collectionView.reloadData()
@@ -98,12 +122,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Detail" {
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.selectedPost = sender as? PostData
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.postArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         // Tag番号を使ってImageViewのインスタンス生成
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
         imageView.image = self.postArray[indexPath.row].image
@@ -115,5 +146,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let horizontalSpace : CGFloat = 12
         let cellSize : CGFloat = self.view.bounds.width / 3 - horizontalSpace
         return CGSize(width: cellSize, height: cellSize)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "Detail", sender: self.postArray[indexPath.row])
     }
 }
