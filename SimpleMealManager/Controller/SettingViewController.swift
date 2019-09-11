@@ -31,8 +31,8 @@ class SettingViewController: UIViewController {
         self.present(self.loginViewController!, animated: true, completion: nil)
         
         // ログイン画面から戻ってきた時のためにホーム画面（index = 0）を選択している状態にしておく
-        let tabBarController = parent as! ESTabBarController
-        tabBarController.setSelectedIndex(0, animated: false)
+        let esTabBarController = parent as! ESTabBarController
+        esTabBarController.setSelectedIndex(0, animated: false)
     }
     
     override func viewDidLoad() {

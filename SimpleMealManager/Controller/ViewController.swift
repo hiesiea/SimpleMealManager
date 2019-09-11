@@ -33,6 +33,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return viewController
     }()
     
+    private var esTabBarController: ESTabBarController? = nil
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -70,6 +72,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             SVProgressHUD.showSuccess(withStatus: "投稿に失敗しました")
         }
         picker.dismiss(animated: true, completion: nil)
+        esTabBarController?.setSelectedIndex(0, animated: false)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -78,33 +81,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     private func setupTab() {
         // 画像のファイル名を指定してESTabBarControllerを作成する
-        let tabBarController: ESTabBarController! = ESTabBarController(tabIconNames: ["home", "photo", "photo"])
+        esTabBarController = ESTabBarController(tabIconNames: ["home", "photo", "photo"])
         
         // 背景色、選択時の色を設定する
-        tabBarController.selectedColor = UIColor(red: 1.0, green: 0.44, blue: 0.11, alpha: 1)
-        tabBarController.buttonsBackgroundColor = UIColor(red: 0.96, green: 0.91, blue: 0.87, alpha: 1)
-        tabBarController.selectionIndicatorHeight = 3
+        esTabBarController?.selectedColor = UIColor(red: 1.0, green: 0.44, blue: 0.11, alpha: 1)
+        esTabBarController?.buttonsBackgroundColor = UIColor(red: 0.96, green: 0.91, blue: 0.87, alpha: 1)
+        esTabBarController?.selectionIndicatorHeight = 3
         
         // 作成したESTabBarControllerを親のViewController（＝self）に追加する
-        addChild(tabBarController)
-        let tabBarView = tabBarController.view!
-        tabBarView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tabBarView)
+        addChild(esTabBarController!)
+        let tabBarView = esTabBarController?.view!
+        tabBarView?.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tabBarView!)
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            tabBarView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            tabBarView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            tabBarView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            tabBarView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            (tabBarView?.topAnchor.constraint(equalTo: safeArea.topAnchor))!,
+            (tabBarView?.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor))!,
+            (tabBarView?.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor))!,
+            (tabBarView?.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor))!,
             ])
-        tabBarController.didMove(toParent: self)
+        esTabBarController?.didMove(toParent: self)
         
-        tabBarController.setView(self.homeViewController, at: 0)
-        tabBarController.setView(self.settingViewController, at: 2)
+        esTabBarController?.setView(self.homeViewController, at: 0)
+        esTabBarController?.setView(self.settingViewController, at: 2)
         
         // 真ん中のタブはボタンとして扱う
-        tabBarController.highlightButton(at: 1)
-        tabBarController.setAction({
+        esTabBarController?.highlightButton(at: 1)
+        esTabBarController?.setAction({
             self.displayAlert()
         }, at: 1)
     }
