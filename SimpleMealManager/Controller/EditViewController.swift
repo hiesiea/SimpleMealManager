@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class EditViewController: UIViewController {
     @IBOutlet weak var commentTextView: UITextView!
@@ -30,8 +31,10 @@ class EditViewController: UIViewController {
     @objc func handleSaveButton(_ sender: UIBarButtonItem) {
         let postRef = Database.database().reference().child(Const.PostPath).child(selectedPost!.id!)
         let comment = ["comment": commentTextView.text]
-        postRef.updateChildValues(comment)
-        print("\(selectedPost!.id!)を削除")
+        postRef.updateChildValues(comment as [AnyHashable : Any])
+        print("\(selectedPost!.id!)を編集")
         self.navigationController?.popToRootViewController(animated: true)
+        // HUDで完了を知らせる
+        SVProgressHUD.showSuccess(withStatus: "編集しました")
     }
 }

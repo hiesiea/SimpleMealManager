@@ -69,7 +69,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             SVProgressHUD.showSuccess(withStatus: "投稿しました")
         } else {
-            SVProgressHUD.showSuccess(withStatus: "投稿に失敗しました")
+            SVProgressHUD.showError(withStatus: "投稿に失敗しました")
         }
         picker.dismiss(animated: true, completion: nil)
         esTabBarController?.setSelectedIndex(0, animated: false)

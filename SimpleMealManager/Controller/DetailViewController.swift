@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
@@ -40,6 +41,8 @@ class DetailViewController: UIViewController {
         Database.database().reference().child(Const.PostPath).child(selectedPost!.id!).removeValue()
         print("\(selectedPost!.id!)を削除")
         self.navigationController?.popToRootViewController(animated: true)
+        // HUDで完了を知らせる
+        SVProgressHUD.showSuccess(withStatus: "削除しました")
     }
     
     @objc func handleEditButton(_ sender: UIBarButtonItem) {
