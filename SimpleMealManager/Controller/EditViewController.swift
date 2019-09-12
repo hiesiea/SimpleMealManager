@@ -20,11 +20,14 @@ class EditViewController: UIViewController {
         
         if selectedPost != nil {
             commentTextView.text = selectedPost?.comment
+        } else {
+            // ホーム画面に戻る
+            self.navigationController?.popToRootViewController(animated: true)
+            SVProgressHUD.showError(withStatus: "読み込みに失敗しました")
         }
         
+        // 保存ボタン
         let saveButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(handleSaveButton(_:)))
-        
-        //ナビゲーションバーの右側にボタン付与
         self.navigationItem.setRightBarButtonItems([saveButton], animated: true)
     }
     
@@ -33,8 +36,9 @@ class EditViewController: UIViewController {
         let comment = ["comment": commentTextView.text]
         postRef.updateChildValues(comment as [AnyHashable : Any])
         print("\(selectedPost!.id!)を編集")
+        
+        // ホーム画面に戻る
         self.navigationController?.popToRootViewController(animated: true)
-        // HUDで完了を知らせる
         SVProgressHUD.showSuccess(withStatus: "編集しました")
     }
 }

@@ -8,8 +8,8 @@
 
 import UIKit
 import ESTabBarController
-import Firebase
 import SVProgressHUD
+import Firebase
 
 class SettingViewController: UIViewController {
     

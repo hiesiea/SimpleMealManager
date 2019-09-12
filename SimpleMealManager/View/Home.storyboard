@@ -110,6 +110,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26z-BF-o2t">
                                 <rect key="frame" x="16" y="543" width="343" height="30"/>
                                 <state key="normal" title="シェア"/>
+                                <connections>
+                                    <action selector="handleShareButton:" destination="tmm-6H-iga" eventType="touchUpInside" id="oOi-Sz-kdB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DQ-Db-Qre">
                                 <rect key="frame" x="16" y="583" width="343" height="30"/>
