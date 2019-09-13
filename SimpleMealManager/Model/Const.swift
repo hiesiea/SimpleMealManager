@@ -10,4 +10,6 @@ import Foundation
 
 struct Const {
     static let PostPath = "posts"
+    static let StorageUrl = "gs://simplemealmanager-3df92.appspot.com/"
+    static let ImageExtension = ".jpg"
 }

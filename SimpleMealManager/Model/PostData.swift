@@ -12,7 +12,7 @@ import Firebase
 class PostData: NSObject {
     var id: String?
     var image: UIImage?
-    var imageString: String?
+    var imageUrl: String?
     var comment: String?
     var date: Date?
     
@@ -22,8 +22,15 @@ class PostData: NSObject {
         
         let valueDictionary = snapshot.value as! [String: Any]
         
-        imageString = valueDictionary["image"] as? String
-        image = UIImage(data: Data(base64Encoded: imageString!, options: .ignoreUnknownCharacters)!)
+        imageUrl = valueDictionary["imageUrl"] as? String
+        let url = URL(string: imageUrl!)
+        do {
+            let data = try Data(contentsOf: url!)
+            image = UIImage(data: data)
+            
+        } catch let err {
+            print("Error : \(err.localizedDescription)")
+        }
         
         self.comment = valueDictionary["comment"] as? String
         

@@ -84,12 +84,19 @@ class DetailViewController: UIViewController {
         
         let action = UIAlertAction(title: "削除", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
-            Database.database().reference().child(Const.PostPath).child(self.selectedPost!.id!).removeValue()
-            print("\(self.selectedPost!.id!)を削除")
-            
-            // ホーム画面に戻る
-            self.navigationController?.popToRootViewController(animated: true)
-            SVProgressHUD.showSuccess(withStatus: "削除しました")
+            let storageRef = Storage.storage().reference(forURL: Const.StorageUrl).child(Const.PostPath)
+            storageRef.child(self.selectedPost!.id! + Const.ImageExtension).delete { error in
+                if let error = error {
+                    print("削除失敗 \(error.localizedDescription)")
+                    SVProgressHUD.showSuccess(withStatus: "削除に失敗しました")
+                } else {
+                    Database.database().reference().child(Const.PostPath).child(self.selectedPost!.id!).removeValue()
+                    print("\(self.selectedPost!.id!)を削除")
+                    SVProgressHUD.showSuccess(withStatus: "削除しました")
+                    // ホーム画面に戻る
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }
         })
         
         let cancel = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: {

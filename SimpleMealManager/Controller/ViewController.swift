@@ -55,19 +55,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if info[.originalImage] != nil {
             let image = info[.originalImage] as! UIImage
             print("DEBUG_PRINT: image = \(image)")
-            
-            let imageData = image.jpegData(compressionQuality: 0.5)
-            let imageString = imageData!.base64EncodedString(options: .lineLength64Characters)
-            
-            // postDataに必要な情報を取得しておく
-            let time = Date.timeIntervalSinceReferenceDate
-            
-            // 辞書を作成してFirebaseに保存する
-            let postRef = Database.database().reference().child(Const.PostPath)
-            let postDic = ["image": imageString, "time": String(time), "comment": String()]
-            postRef.childByAutoId().setValue(postDic)
-            
-            SVProgressHUD.showSuccess(withStatus: "投稿しました")
+            uploadImage(image: image)
         } else {
             SVProgressHUD.showError(withStatus: "投稿に失敗しました")
         }
@@ -82,11 +70,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     private func setupTab() {
         // 画像のファイル名を指定してESTabBarControllerを作成する
         esTabBarController = ESTabBarController(tabIconNames: ["home", "photo", "photo"])
-        
-        // 背景色、選択時の色を設定する
-        esTabBarController?.selectedColor = UIColor(red: 1.0, green: 0.44, blue: 0.11, alpha: 1)
-        esTabBarController?.buttonsBackgroundColor = UIColor(red: 0.96, green: 0.91, blue: 0.87, alpha: 1)
-        esTabBarController?.selectionIndicatorHeight = 3
         
         // 作成したESTabBarControllerを親のViewController（＝self）に追加する
         addChild(esTabBarController!)
@@ -143,5 +126,45 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         alert.addAction(cancelAction)
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    //Storageに画像を保存する
+    private func uploadImage(image: UIImage) {
+        // HUDで処理中を表示
+        SVProgressHUD.show()
+        
+        let postRef = Database.database().reference().child(Const.PostPath)
+        guard let key = postRef.childByAutoId().key else {
+            print("keyの発行に失敗")
+            SVProgressHUD.showError(withStatus: "投稿に失敗しました")
+            return
+        }
+        
+        let storageRef = Storage.storage().reference(forURL: Const.StorageUrl).child(Const.PostPath)
+        let data = image.jpegData(compressionQuality: 0.7)! as Data
+        
+        // Upload the file
+        storageRef.child(key + Const.ImageExtension).putData(data, metadata: nil) { (metadata, error) in
+
+            // You can also access to download URL after upload.
+            storageRef.child(key + Const.ImageExtension).downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    print("保存失敗 \(error.debugDescription)")
+                    SVProgressHUD.showError(withStatus: "投稿に失敗しました")
+                    return
+                }
+                // postDataに必要な情報を取得しておく
+                let time = Date.timeIntervalSinceReferenceDate
+                let imageUrl = downloadURL.absoluteString
+
+                // 辞書を作成してFirebaseに保存する
+                let postDic = ["imageUrl": imageUrl, "time": String(time), "comment": String()]
+                postRef.child(key).setValue(postDic)
+                print("保存されました！")
+
+                // HUDで処理中を表示
+                SVProgressHUD.dismiss()
+            }
+        }
     }
 }

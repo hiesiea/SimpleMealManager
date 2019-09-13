@@ -38,9 +38,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         if Auth.auth().currentUser != nil {
             if self.observing == false {
                 
-                // HUDで処理中を表示
-                SVProgressHUD.show()
-                
                 // 要素が追加されたらpostArrayに追加してTableViewを再表示する
                 let postsRef = Database.database().reference().child(Const.PostPath)
                 postsRef.observe(.childAdded, with: { snapshot in
@@ -53,9 +50,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         
                         // TableViewを再表示する
                         self.collectionView.reloadData()
-                        
-                        // HUDを消す
-                        SVProgressHUD.dismiss()
                     }
                 })
                 postsRef.observe(.childRemoved, with: { snapshot in
