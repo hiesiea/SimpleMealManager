@@ -28,8 +28,8 @@ class EditViewController: UIViewController {
         }
         
         // 保存ボタン
-        let saveButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(handleSaveButton(_:)))
-        self.navigationItem.setRightBarButtonItems([saveButton], animated: true)
+        let saveButtonItem: UIBarButtonItem = UIBarButtonItem(title: "保存", style: .plain, target: self, action: #selector(handleSaveButton(_:)))
+        self.navigationItem.setRightBarButtonItems([saveButtonItem], animated: true)
     }
     
     @objc func handleSaveButton(_ sender: UIBarButtonItem) {

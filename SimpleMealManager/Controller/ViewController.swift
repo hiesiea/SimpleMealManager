@@ -55,7 +55,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if info[.originalImage] != nil {
             let image = info[.originalImage] as! UIImage
             print("DEBUG_PRINT: image = \(image)")
-            uploadImage(image: image)
+            let resizeWidth = image.size.width / 5
+            let resizeHeight = image.size.height / 5
+            let resizeImage = image.resize(size: CGSize(width: resizeWidth, height: resizeHeight))
+            uploadImage(image: resizeImage!)
         } else {
             SVProgressHUD.showError(withStatus: "投稿に失敗しました")
         }
@@ -73,7 +76,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // 背景色、選択時の色を設定する
         esTabBarController?.selectedColor = UIColor(red: 1.0, green: 0.44, blue: 0.11, alpha: 1)
-        esTabBarController?.buttonsBackgroundColor = UIColor(red: 0.96, green: 0.91, blue: 0.87, alpha: 1)
+        esTabBarController?.buttonsBackgroundColor = UIColor(red: 249, green: 249, blue: 249, alpha: 1)
         esTabBarController?.selectionIndicatorHeight = 3
         
         // 作成したESTabBarControllerを親のViewController（＝self）に追加する
@@ -150,7 +153,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Upload the file
         storageRef.child(key + Const.ImageExtension).putData(data, metadata: nil) { (metadata, error) in
-
+            
             // You can also access to download URL after upload.
             storageRef.child(key + Const.ImageExtension).downloadURL { (url, error) in
                 guard let downloadURL = url else {
@@ -161,15 +164,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 // postDataに必要な情報を取得しておく
                 let time = Date.timeIntervalSinceReferenceDate
                 let imageUrl = downloadURL.absoluteString
-
+                
                 // 辞書を作成してFirebaseに保存する
                 let postDic = ["imageUrl": imageUrl, "time": String(time), "comment": String()]
                 postRef.child(key).setValue(postDic)
                 print("保存されました！")
-
+                
                 // HUDで処理中を表示
                 SVProgressHUD.dismiss()
             }
         }
+    }
+}
+
+extension UIImage {
+    func resize(size _size: CGSize) -> UIImage? {
+        let widthRatio = _size.width / size.width
+        let heightRatio = _size.height / size.height
+        let ratio = widthRatio < heightRatio ? widthRatio : heightRatio
+        
+        let resizedSize = CGSize(width: size.width * ratio, height: size.height * ratio)
+        
+        UIGraphicsBeginImageContextWithOptions(resizedSize, false, 0.0) // 変更
+        draw(in: CGRect(origin: .zero, size: resizedSize))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return resizedImage
     }
 }

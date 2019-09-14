@@ -59,7 +59,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aJv-Xj-4fc"/>
                     </view>
-                    <navigationItem key="navigationItem" title="ホーム" id="fLP-zi-LOm"/>
+                    <navigationItem key="navigationItem" title="ホーム" id="fLP-zi-LOm">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Yk3-zp-Ebe"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="d9K-B3-w6j" id="V4p-kG-Jts"/>
                         <segue destination="tmm-6H-iga" kind="show" identifier="Detail" id="0D9-fR-5qD"/>
@@ -115,14 +117,20 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26z-BF-o2t">
-                                <rect key="frame" x="16" y="523" width="343" height="40"/>
+                                <rect key="frame" x="37.5" y="523" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="hdN-Ba-XSI"/>
+                                </constraints>
                                 <state key="normal" title="シェア" backgroundImage="btn"/>
                                 <connections>
                                     <action selector="handleShareButton:" destination="tmm-6H-iga" eventType="touchUpInside" id="oOi-Sz-kdB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DQ-Db-Qre">
-                                <rect key="frame" x="16" y="573" width="343" height="40"/>
+                                <rect key="frame" x="37.5" y="573" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="EpO-6I-62a"/>
+                                </constraints>
                                 <state key="normal" title="削除" backgroundImage="btn"/>
                                 <connections>
                                     <action selector="handleDeleteButton:" destination="tmm-6H-iga" eventType="touchUpInside" id="3th-op-daf"/>
@@ -137,15 +145,13 @@
                             <constraint firstItem="O1M-s1-GsQ" firstAttribute="leading" secondItem="s1K-AG-LK5" secondAttribute="leading" constant="16" id="EEm-Fv-8H7"/>
                             <constraint firstItem="26z-BF-o2t" firstAttribute="top" secondItem="vlY-TA-WiE" secondAttribute="bottom" constant="10" id="Eph-u7-rsZ"/>
                             <constraint firstItem="O1M-s1-GsQ" firstAttribute="top" secondItem="5zW-kS-QER" secondAttribute="bottom" constant="10" id="G4p-8b-7qW"/>
-                            <constraint firstItem="s1K-AG-LK5" firstAttribute="trailing" secondItem="8DQ-Db-Qre" secondAttribute="trailing" constant="16" id="Hdl-mj-W5G"/>
-                            <constraint firstItem="s1K-AG-LK5" firstAttribute="trailing" secondItem="26z-BF-o2t" secondAttribute="trailing" constant="16" id="J54-D7-MvR"/>
                             <constraint firstItem="s1K-AG-LK5" firstAttribute="trailing" secondItem="5zW-kS-QER" secondAttribute="trailing" constant="16" id="JAZ-fT-Y2w"/>
                             <constraint firstItem="5zW-kS-QER" firstAttribute="leading" secondItem="s1K-AG-LK5" secondAttribute="leading" constant="16" id="JFs-hz-PIC"/>
-                            <constraint firstItem="8DQ-Db-Qre" firstAttribute="leading" secondItem="s1K-AG-LK5" secondAttribute="leading" constant="16" id="MDl-6I-JWv"/>
+                            <constraint firstItem="26z-BF-o2t" firstAttribute="centerX" secondItem="WXb-Fc-kgk" secondAttribute="centerX" id="Mnn-1O-S52"/>
                             <constraint firstItem="s1K-AG-LK5" firstAttribute="trailing" secondItem="vlY-TA-WiE" secondAttribute="trailing" constant="16" id="Pam-Z5-p0Y"/>
                             <constraint firstItem="vlY-TA-WiE" firstAttribute="top" secondItem="O1M-s1-GsQ" secondAttribute="bottom" constant="10" id="VRY-se-i7Z"/>
+                            <constraint firstItem="8DQ-Db-Qre" firstAttribute="centerX" secondItem="WXb-Fc-kgk" secondAttribute="centerX" id="Z43-wl-f5s"/>
                             <constraint firstItem="s1K-AG-LK5" firstAttribute="bottom" secondItem="8DQ-Db-Qre" secondAttribute="bottom" constant="10" id="gRP-8P-Fp5"/>
-                            <constraint firstItem="26z-BF-o2t" firstAttribute="leading" secondItem="s1K-AG-LK5" secondAttribute="leading" constant="16" id="n7H-lP-n70"/>
                             <constraint firstItem="5zW-kS-QER" firstAttribute="top" secondItem="s1K-AG-LK5" secondAttribute="top" id="xHp-k5-WiB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s1K-AG-LK5"/>

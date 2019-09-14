@@ -29,9 +29,13 @@ class DetailViewController: UIViewController {
             SVProgressHUD.showError(withStatus: "読み込みに失敗しました")
         }
         
+        // 戻るボタン
+        let backButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backButtonItem
+        
         // 編集ボタン
-        let editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.edit, target: self, action: #selector(handleEditButton(_:)))
-        self.navigationItem.setRightBarButtonItems([editButton], animated: true)
+        let editButtonItem: UIBarButtonItem = UIBarButtonItem(title: "編集", style: .plain, target: self, action: #selector(handleEditButton(_:)))
+        self.navigationItem.setRightBarButton(editButtonItem, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,7 +47,7 @@ class DetailViewController: UIViewController {
     
     @IBAction func handleShareButton(_ sender: Any) {
         if self.selectedPost!.comment!.isEmpty {
-            SVProgressHUD.showError(withStatus: "コメントがありません")
+            SVProgressHUD.showError(withStatus: "コメントを入力してください")
             return
         }
         
