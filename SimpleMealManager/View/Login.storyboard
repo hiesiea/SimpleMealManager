@@ -36,22 +36,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4M-rq-Q48">
-                                <rect key="frame" x="37.5" y="180" width="300" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4M-rq-Q48">
+                                <rect key="frame" x="37.5" y="180" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Uvy-24-sd9"/>
                                 </constraints>
-                                <state key="normal" title="ログイン"/>
+                                <state key="normal" title="ログイン" backgroundImage="btn"/>
                                 <connections>
                                     <action selector="handleLoginButton:" destination="YZs-eN-4th" eventType="touchUpInside" id="nG9-7d-Nps"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KO4-OQ-vZB">
-                                <rect key="frame" x="37.5" y="220" width="300" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KO4-OQ-vZB">
+                                <rect key="frame" x="37.5" y="230" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="DFa-PG-RMC"/>
                                 </constraints>
-                                <state key="normal" title="アカウント作成"/>
+                                <state key="normal" title="アカウント作成" backgroundImage="btn"/>
                                 <connections>
                                     <action selector="handleCreateAccountButton:" destination="YZs-eN-4th" eventType="touchUpInside" id="XPi-82-e4h"/>
                                 </connections>
@@ -80,4 +80,7 @@
             <point key="canvasLocation" x="-87" y="-14"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btn" width="300" height="40"/>
+    </resources>
 </document>

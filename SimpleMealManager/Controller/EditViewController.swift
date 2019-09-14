@@ -11,15 +11,16 @@ import Firebase
 import SVProgressHUD
 
 class EditViewController: UIViewController {
-    @IBOutlet weak var commentTextView: UITextView!
-    
+    @IBOutlet weak var commentTextView: InspectableTextView!
     var selectedPost: PostData? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if selectedPost != nil {
-            commentTextView.text = selectedPost?.comment
+        if self.selectedPost != nil {
+            self.commentTextView.text = selectedPost?.comment
+            self.commentTextView.togglePlaceholder()
+            self.navigationItem.title = "編集"
         } else {
             // ホーム画面に戻る
             self.navigationController?.popToRootViewController(animated: true)

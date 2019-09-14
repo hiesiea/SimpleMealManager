@@ -69,7 +69,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     private func setupTab() {
         // 画像のファイル名を指定してESTabBarControllerを作成する
-        esTabBarController = ESTabBarController(tabIconNames: ["home", "photo", "photo"])
+        esTabBarController = ESTabBarController(tabIconNames: ["home", "camera", "setting"])
+        
+        // 背景色、選択時の色を設定する
+        esTabBarController?.selectedColor = UIColor(red: 1.0, green: 0.44, blue: 0.11, alpha: 1)
+        esTabBarController?.buttonsBackgroundColor = UIColor(red: 0.96, green: 0.91, blue: 0.87, alpha: 1)
+        esTabBarController?.selectionIndicatorHeight = 3
         
         // 作成したESTabBarControllerを親のViewController（＝self）に追加する
         addChild(esTabBarController!)

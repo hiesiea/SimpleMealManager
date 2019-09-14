@@ -19,9 +19,10 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if selectedPost != nil {
-            imageView.image = selectedPost?.image
-            commentTextView.text = selectedPost?.comment
+        if self.selectedPost != nil {
+            self.imageView.image = self.selectedPost?.image
+            self.commentTextView.text = self.selectedPost?.comment
+            self.navigationItem.title = self.selectedPost?.formatDatetoString()
         } else {
             // ホーム画面に戻る
             self.navigationController?.popToRootViewController(animated: true)

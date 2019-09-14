@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--ホーム-->
         <scene sceneID="MZC-Lc-ovn">
             <objects>
                 <viewController id="UBG-q8-lCP" customClass="HomeViewController" customModule="SimpleMealManager" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,7 +59,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aJv-Xj-4fc"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fLP-zi-LOm"/>
+                    <navigationItem key="navigationItem" title="ホーム" id="fLP-zi-LOm"/>
                     <connections>
                         <outlet property="collectionView" destination="d9K-B3-w6j" id="V4p-kG-Jts"/>
                         <segue destination="tmm-6H-iga" kind="show" identifier="Detail" id="0D9-fR-5qD"/>
@@ -101,32 +101,33 @@
                                     <constraint firstAttribute="width" secondItem="5zW-kS-QER" secondAttribute="height" multiplier="1:1" id="eLh-l4-kdM"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlY-TA-WiE">
-                                <rect key="frame" x="16" y="448" width="343" height="85"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26z-BF-o2t">
-                                <rect key="frame" x="16" y="543" width="343" height="30"/>
-                                <state key="normal" title="シェア"/>
-                                <connections>
-                                    <action selector="handleShareButton:" destination="tmm-6H-iga" eventType="touchUpInside" id="oOi-Sz-kdB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DQ-Db-Qre">
-                                <rect key="frame" x="16" y="583" width="343" height="30"/>
-                                <state key="normal" title="削除"/>
-                                <connections>
-                                    <action selector="handleDeleteButton:" destination="tmm-6H-iga" eventType="touchUpInside" id="3th-op-daf"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="コメント" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1M-s1-GsQ">
                                 <rect key="frame" x="16" y="417" width="343" height="21"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlY-TA-WiE">
+                                <rect key="frame" x="16" y="448" width="343" height="65"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26z-BF-o2t">
+                                <rect key="frame" x="16" y="523" width="343" height="40"/>
+                                <state key="normal" title="シェア" backgroundImage="btn"/>
+                                <connections>
+                                    <action selector="handleShareButton:" destination="tmm-6H-iga" eventType="touchUpInside" id="oOi-Sz-kdB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DQ-Db-Qre">
+                                <rect key="frame" x="16" y="573" width="343" height="40"/>
+                                <state key="normal" title="削除" backgroundImage="btn"/>
+                                <connections>
+                                    <action selector="handleDeleteButton:" destination="tmm-6H-iga" eventType="touchUpInside" id="3th-op-daf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -171,15 +172,19 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="コメント" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLE-6R-Wkz">
                                 <rect key="frame" x="16" y="74" width="343" height="21"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I76-aV-bEp">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I76-aV-bEp" customClass="InspectableTextView" customModule="SimpleMealManager" customModuleProvider="target">
                                 <rect key="frame" x="16" y="105" width="343" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedString" value="ここにコメントを入力"/>
+                                </userDefinedRuntimeAttributes>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -195,7 +200,7 @@
                         <viewLayoutGuide key="safeArea" id="j6y-Yb-n12"/>
                     </view>
                     <connections>
-                        <outlet property="commentTextView" destination="I76-aV-bEp" id="pdf-Ul-SUG"/>
+                        <outlet property="commentTextView" destination="I76-aV-bEp" id="tqB-he-pPt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOe-Jv-dUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -203,4 +208,8 @@
             <point key="canvasLocation" x="2974" y="103"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btn" width="300" height="40"/>
+    </resources>
+    <color key="tintColor" red="1" green="0.58823529411764708" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
