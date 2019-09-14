@@ -33,9 +33,9 @@ class EditViewController: UIViewController {
     }
     
     @objc func handleSaveButton(_ sender: UIBarButtonItem) {
-        let postRef = Database.database().reference().child(Const.PostPath).child(selectedPost!.id!)
+        let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
         let comment = ["comment": commentTextView.text]
-        postRef.updateChildValues(comment as [AnyHashable : Any])
+        databaseRef.child(self.selectedPost!.id!).updateChildValues(comment as [AnyHashable : Any])
         print("\(selectedPost!.id!)を編集")
         
         // ホーム画面に戻る

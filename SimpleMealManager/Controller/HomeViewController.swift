@@ -35,16 +35,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewWillAppear(animated)
         print("DEBUG_PRINT: viewWillAppear")
         
-        if Auth.auth().currentUser != nil {
+        if FirebaseData.getUser() != nil {
             if self.observing == false {
                 
                 // 要素が追加されたらpostArrayに追加してTableViewを再表示する
-                let postsRef = Database.database().reference().child(Const.PostPath)
-                postsRef.observe(.childAdded, with: { snapshot in
+                let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
+                databaseRef.observe(.childAdded, with: { snapshot in
                     print("DEBUG_PRINT: .childAddedイベントが発生しました")
                     
                     // PostDataクラスを生成して受け取ったデータを設定する
-                    if let uid = Auth.auth().currentUser?.uid {
+                    if let uid = FirebaseData.getUser()?.uid {
                         let postData = PostData(snapshot: snapshot, myId: uid)
                         self.postArray.insert(postData, at: 0)
                         
@@ -52,10 +52,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         self.collectionView.reloadData()
                     }
                 })
-                postsRef.observe(.childRemoved, with: { snapshot in
+                databaseRef.observe(.childRemoved, with: { snapshot in
                     print("DEBUG_PRINT: .childRemovedイベントが発生しました")
                     // PostDataクラスを生成して受け取ったデータを設定する
-                    if let uid = Auth.auth().currentUser?.uid {
+                    if let uid = FirebaseData.getUser()?.uid {
                         // PostDataクラスを生成して受け取ったデータを設定する
                         let postData = PostData(snapshot: snapshot, myId: uid)
                         
@@ -76,10 +76,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     }
                 })
                 // 要素が変更されたら該当のデータをpostArrayから一度削除した後に新しいデータを追加してTableViewを再表示する
-                postsRef.observe(.childChanged, with: { snapshot in
+                databaseRef.observe(.childChanged, with: { snapshot in
                     print("DEBUG_PRINT: .childChangedイベントが発生しました")
                     
-                    if let uid = Auth.auth().currentUser?.uid {
+                    if let uid = FirebaseData.getUser()?.uid {
                         // PostDataクラスを生成して受け取ったデータを設定する
                         let postData = PostData(snapshot: snapshot, myId: uid)
                         
@@ -113,9 +113,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 // テーブルをクリアする
                 self.postArray = []
                 self.collectionView.reloadData()
+                
                 // オブザーバーを削除する
-                let postsRef = Database.database().reference().child(Const.PostPath)
-                postsRef.removeAllObservers()
+                let databaseRef = FirebaseData.getPostsDatabaseReferenceLogout()
+                databaseRef.removeAllObservers()
                 
                 // DatabaseのobserveEventが上記コードにより解除されたため
                 // falseとする

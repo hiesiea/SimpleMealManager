@@ -141,14 +141,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // HUDで処理中を表示
         SVProgressHUD.show()
         
-        let postRef = Database.database().reference().child(Const.PostPath)
-        guard let key = postRef.childByAutoId().key else {
+        if FirebaseData.getUser() == nil {
+            print("ユーザがいない")
+            SVProgressHUD.showError(withStatus: "投稿に失敗しました")
+            return
+        }
+        let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
+        guard let key = databaseRef.childByAutoId().key else {
             print("keyの発行に失敗")
             SVProgressHUD.showError(withStatus: "投稿に失敗しました")
             return
         }
         
-        let storageRef = Storage.storage().reference(forURL: Const.StorageUrl).child(Const.PostPath)
+        let storageRef = FirebaseData.getPostsStorageReference(uid: FirebaseData.getUser()!.uid)
         let data = image.jpegData(compressionQuality: 0.7)! as Data
         
         // Upload the file
@@ -167,7 +172,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 
                 // 辞書を作成してFirebaseに保存する
                 let postDic = ["imageUrl": imageUrl, "time": String(time), "comment": String()]
-                postRef.child(key).setValue(postDic)
+                databaseRef.child(key).setValue(postDic)
                 print("保存されました！")
                 
                 // HUDで処理中を表示

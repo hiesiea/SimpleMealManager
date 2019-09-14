@@ -12,6 +12,7 @@ import SVProgressHUD
 import Firebase
 
 class SettingViewController: UIViewController {
+    @IBOutlet weak var emailTextView: UILabel!
     
     private let loginViewController: UIViewController? = {
         // ViewControllerを設定する
@@ -37,5 +38,6 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.emailTextView.text = Auth.auth().currentUser?.email
     }
 }
