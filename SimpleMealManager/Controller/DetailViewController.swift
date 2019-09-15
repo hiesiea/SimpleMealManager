@@ -54,8 +54,8 @@ class DetailViewController: UIViewController {
         let alert: UIAlertController = UIAlertController(title: "シェア", message: "シェア方法を選択してください", preferredStyle:  UIAlertController.Style.actionSheet)
         let photoLibraryAction: UIAlertAction = UIAlertAction(title: "Twitter", style: UIAlertAction.Style.default, handler:{
             (action: UIAlertAction!) -> Void in
-            let comment = self.selectedPost!.comment!
-            let urlString = "https://twitter.com/intent/tweet?text=\(comment)"
+            let shareMessage = "\(self.selectedPost!.comment!)\n\(self.selectedPost!.imageUrl!)"
+            let urlString = "https://twitter.com/intent/tweet?text=\(shareMessage)"
             let encodedText = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             if let encodedText = encodedText,
                 let url = URL(string: encodedText) {
@@ -64,8 +64,8 @@ class DetailViewController: UIViewController {
         })
         let cameraAction: UIAlertAction = UIAlertAction(title: "LINE", style: UIAlertAction.Style.default, handler:{
             (action: UIAlertAction!) -> Void in
-            let comment = self.selectedPost!.comment!
-            let urlString = "line://msg/text/?\(comment)"
+            let shareMessage = "\(self.selectedPost!.comment!)\n\(self.selectedPost!.imageUrl!)"
+            let urlString = "line://msg/text/?\(shareMessage)"
             let encodedText = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             if let encodedText = encodedText,
                 let url = URL(string: encodedText) {
