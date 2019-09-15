@@ -37,7 +37,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         if FirebaseData.getUser() != nil {
             if self.observing == false {
-                
+                SVProgressHUD.show()
                 // 要素が追加されたらpostArrayに追加してTableViewを再表示する
                 let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
                 databaseRef.observe(.childAdded, with: { snapshot in
@@ -48,6 +48,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         
                         // TableViewを再表示する
                         self.collectionView.reloadData()
+                        
+                        SVProgressHUD.dismiss()
                     }
                 })
                 databaseRef.observe(.childRemoved, with: { snapshot in

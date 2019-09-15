@@ -55,10 +55,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if info[.originalImage] != nil {
             let image = info[.originalImage] as! UIImage
             print("DEBUG_PRINT: image = \(image)")
-            let resizeWidth = image.size.width / 5
-            let resizeHeight = image.size.height / 5
-            let resizeImage = image.resize(size: CGSize(width: resizeWidth, height: resizeHeight))
-            uploadImage(image: resizeImage!)
+            
+            // 画像を正方形にクリッピング
+            let size = image.size.width < image.size.height ? image.size.width : image.size.height
+            let x = abs(size - image.size.width) / 2
+            let y = abs(size - image.size.height) / 2
+            let cgRect = CGRect(x: x, y: y, width: size, height: size)
+            let croppedImage = image.cropping(to: cgRect)
+            
+            // 画像をリサイズ
+            let resizedWidth = croppedImage!.size.width / 4
+            let resizedHeight = croppedImage!.size.height / 4
+            let resizedImage = croppedImage?.resize(size: CGSize(width: resizedWidth, height: resizedHeight))
+            uploadImage(image: resizedImage!)
         } else {
             SVProgressHUD.showError(withStatus: "投稿に失敗しました")
         }
@@ -161,7 +170,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         // JPEGデータに変換
-        let data = image.jpegData(compressionQuality: 0.7)! as Data
+        let data = image.jpegData(compressionQuality: 0.8)! as Data
         
         // Storageに画像を保存
         let storageRef = FirebaseData.getPostsStorageReference(uid: FirebaseData.getUser()!.uid)
@@ -202,5 +211,35 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         return resizedImage
+    }
+}
+
+extension UIImage.Orientation {
+    /// 画像が横向きであるか
+    var isLandscape: Bool {
+        switch self {
+        case .up, .down, .upMirrored, .downMirrored:
+            return false
+        case .left, .right, .leftMirrored, .rightMirrored:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+extension CGRect {
+    /// 反転させたサイズを返す
+    var switched: CGRect {
+        return CGRect(x: minY, y: minX, width: height, height: width)
+    }
+}
+
+extension UIImage {
+    func cropping(to rect: CGRect) -> UIImage? {
+        let croppingRect: CGRect = imageOrientation.isLandscape ? rect.switched : rect
+        guard let cgImage: CGImage = self.cgImage?.cropping(to: croppingRect) else { return nil }
+        let cropped: UIImage = UIImage(cgImage: cgImage, scale: scale, orientation: imageOrientation)
+        return cropped
     }
 }
