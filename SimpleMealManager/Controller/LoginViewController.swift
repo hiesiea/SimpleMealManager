@@ -37,6 +37,8 @@ class LoginViewController: UIViewController {
                 // HUDを消す
                 SVProgressHUD.dismiss()
                 
+                self.clearTextField()
+                
                 // 画面を閉じてViewControllerに戻る
                 self.dismiss(animated: true, completion: nil)
             }
@@ -69,13 +71,16 @@ class LoginViewController: UIViewController {
                 // HUDを消す
                 SVProgressHUD.dismiss()
                 
+                self.clearTextField()
+                
                 // 画面を閉じてViewControllerに戻る
                 self.dismiss(animated: true, completion: nil)
             }
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private func clearTextField() {
+        self.mailAddressTextField.text = ""
+        self.passwordTextField.text = ""
     }
 }

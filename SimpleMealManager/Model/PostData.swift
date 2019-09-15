@@ -11,26 +11,18 @@ import Firebase
 
 class PostData: NSObject {
     var id: String?
-    var image: UIImage?
     var imageUrl: String?
     var comment: String?
     var date: Date?
+    private var image: UIImage?
     
-    init(snapshot: DataSnapshot, myId: String) {
+    init(snapshot: DataSnapshot) {
         self.id = snapshot.key
-        print("snapshot.key = \(snapshot.key), myId = \(myId)")
+        print("snapshot.key = \(snapshot.key)")
         
         let valueDictionary = snapshot.value as! [String: Any]
         
         imageUrl = valueDictionary["imageUrl"] as? String
-        let url = URL(string: imageUrl!)
-        do {
-            let data = try Data(contentsOf: url!)
-            image = UIImage(data: data)
-            
-        } catch let err {
-            print("Error : \(err.localizedDescription)")
-        }
         
         self.comment = valueDictionary["comment"] as? String
         
@@ -38,6 +30,22 @@ class PostData: NSObject {
         self.date = Date(timeIntervalSinceReferenceDate: TimeInterval(time!)!)
     }
     
+    // URLから実データを生成
+    func getUIImage() -> UIImage? {
+        if self.image == nil {
+            let url = URL(string: imageUrl!)
+            do {
+                let data = try Data(contentsOf: url!)
+                self.image = UIImage(data: data)
+            } catch let err {
+                print("Error : \(err.localizedDescription)")
+                return nil
+            }
+        }
+        return self.image
+    }
+    
+    // フォーマット済みの日付を返す
     func formatDatetoString() -> String {
         if self.date == nil {
             return ""
@@ -48,5 +56,16 @@ class PostData: NSObject {
         f.timeStyle = .medium
         f.locale = Locale(identifier: "ja_JP")
         return f.string(from: self.date!)
+    }
+    
+    // シェア用のメッセージを返す
+    func getShareMessage() -> String {
+        var shareMessage = String()
+        if self.comment!.isEmpty {
+            shareMessage.append(self.imageUrl!)
+        } else {
+            shareMessage.append("\(self.comment!)\n\(self.imageUrl!)")
+        }
+        return shareMessage
     }
 }

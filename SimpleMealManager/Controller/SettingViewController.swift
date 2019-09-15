@@ -36,8 +36,8 @@ class SettingViewController: UIViewController {
         esTabBarController.setSelectedIndex(0, animated: false)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.emailTextView.text = Auth.auth().currentUser?.email
     }
 }

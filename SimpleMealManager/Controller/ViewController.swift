@@ -99,14 +99,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // 真ん中のタブはボタンとして扱う
         esTabBarController?.highlightButton(at: 1)
         esTabBarController?.setAction({
-            self.displayAlert()
+            self.displayPostAlert()
         }, at: 1)
     }
     
-    private func displayAlert() {
-        let alert: UIAlertController = UIAlertController(title: "投稿", message: "投稿方法を選択してください", preferredStyle:  UIAlertController.Style.actionSheet)
+    private func displayPostAlert() {
+        let postAlert: UIAlertController = UIAlertController(title: "投稿", message: "投稿方法を選択してください", preferredStyle:  UIAlertController.Style.actionSheet)
+        
         let photoLibraryAction: UIAlertAction = UIAlertAction(title: "フォトライブラリ", style: UIAlertAction.Style.default, handler:{
             (action: UIAlertAction!) -> Void in
+            
             // ライブラリ（カメラロール）を指定してピッカーを開く
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 let pickerController = UIImagePickerController()
@@ -115,8 +117,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 self.present(pickerController, animated: true, completion: nil)
             }
         })
+        
         let cameraAction: UIAlertAction = UIAlertAction(title: "カメラ", style: UIAlertAction.Style.default, handler:{
             (action: UIAlertAction!) -> Void in
+            
             // カメラを指定してピッカーを開く
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 let pickerController = UIImagePickerController()
@@ -125,27 +129,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 self.present(pickerController, animated: true, completion: nil)
             }
         })
+        
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
             (action: UIAlertAction!) -> Void in
         })
         
-        alert.addAction(photoLibraryAction)
-        alert.addAction(cameraAction)
-        alert.addAction(cancelAction)
+        postAlert.addAction(photoLibraryAction)
+        postAlert.addAction(cameraAction)
+        postAlert.addAction(cancelAction)
         
-        self.present(alert, animated: true, completion: nil)
+        self.present(postAlert, animated: true, completion: nil)
     }
     
     //Storageに画像を保存する
     private func uploadImage(image: UIImage) {
-        // HUDで処理中を表示
         SVProgressHUD.show()
         
+        // ユーザが存在するか
         if FirebaseData.getUser() == nil {
             print("ユーザがいない")
             SVProgressHUD.showError(withStatus: "投稿に失敗しました")
             return
         }
+        
+        // 保存用のkey発行
         let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
         guard let key = databaseRef.childByAutoId().key else {
             print("keyの発行に失敗")
@@ -153,19 +160,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             return
         }
         
-        let storageRef = FirebaseData.getPostsStorageReference(uid: FirebaseData.getUser()!.uid)
+        // JPEGデータに変換
         let data = image.jpegData(compressionQuality: 0.7)! as Data
         
-        // Upload the file
+        // Storageに画像を保存
+        let storageRef = FirebaseData.getPostsStorageReference(uid: FirebaseData.getUser()!.uid)
         storageRef.child(key + Const.ImageExtension).putData(data, metadata: nil) { (metadata, error) in
-            
-            // You can also access to download URL after upload.
             storageRef.child(key + Const.ImageExtension).downloadURL { (url, error) in
                 guard let downloadURL = url else {
                     print("保存失敗 \(error.debugDescription)")
                     SVProgressHUD.showError(withStatus: "投稿に失敗しました")
                     return
                 }
+                
                 // postDataに必要な情報を取得しておく
                 let time = Date.timeIntervalSinceReferenceDate
                 let imageUrl = downloadURL.absoluteString
@@ -175,7 +182,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 databaseRef.child(key).setValue(postDic)
                 print("保存されました！")
                 
-                // HUDで処理中を表示
                 SVProgressHUD.dismiss()
             }
         }
@@ -190,7 +196,7 @@ extension UIImage {
         
         let resizedSize = CGSize(width: size.width * ratio, height: size.height * ratio)
         
-        UIGraphicsBeginImageContextWithOptions(resizedSize, false, 0.0) // 変更
+        UIGraphicsBeginImageContextWithOptions(resizedSize, false, 0.0)
         draw(in: CGRect(origin: .zero, size: resizedSize))
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

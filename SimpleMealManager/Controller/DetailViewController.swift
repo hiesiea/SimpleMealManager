@@ -20,7 +20,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         if self.selectedPost != nil {
-            self.imageView.image = self.selectedPost?.image
+            // 選択された内容をViewに反映
+            self.imageView.image = self.selectedPost?.getUIImage()
             self.commentTextView.text = self.selectedPost?.comment
             self.navigationItem.title = self.selectedPost?.formatDatetoString()
         } else {
@@ -29,11 +30,11 @@ class DetailViewController: UIViewController {
             SVProgressHUD.showError(withStatus: "読み込みに失敗しました")
         }
         
-        // 戻るボタン
+        // 戻るボタンをナビゲーションバーに追加
         let backButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backButtonItem
         
-        // 編集ボタン
+        // 編集ボタンをナビゲーションバーに追加
         let editButtonItem: UIBarButtonItem = UIBarButtonItem(title: "編集", style: .plain, target: self, action: #selector(handleEditButton(_:)))
         self.navigationItem.setRightBarButton(editButtonItem, animated: true)
     }
@@ -46,26 +47,21 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func handleShareButton(_ sender: Any) {
-        if self.selectedPost!.comment!.isEmpty {
-            SVProgressHUD.showError(withStatus: "コメントを入力してください")
-            return
-        }
+        let shareAlert: UIAlertController = UIAlertController(title: "シェア", message: "シェア方法を選択してください", preferredStyle:  UIAlertController.Style.actionSheet)
         
-        let alert: UIAlertController = UIAlertController(title: "シェア", message: "シェア方法を選択してください", preferredStyle:  UIAlertController.Style.actionSheet)
-        let photoLibraryAction: UIAlertAction = UIAlertAction(title: "Twitter", style: UIAlertAction.Style.default, handler:{
+        let twitterAction: UIAlertAction = UIAlertAction(title: "Twitter", style: UIAlertAction.Style.default, handler:{
             (action: UIAlertAction!) -> Void in
-            let shareMessage = "\(self.selectedPost!.comment!)\n\(self.selectedPost!.imageUrl!)"
-            let urlString = "https://twitter.com/intent/tweet?text=\(shareMessage)"
+            let urlString = "https://twitter.com/intent/tweet?text=\(self.selectedPost!.getShareMessage())"
             let encodedText = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             if let encodedText = encodedText,
                 let url = URL(string: encodedText) {
                 UIApplication.shared.open(url)
             }
         })
-        let cameraAction: UIAlertAction = UIAlertAction(title: "LINE", style: UIAlertAction.Style.default, handler:{
+        
+        let lineAction: UIAlertAction = UIAlertAction(title: "LINE", style: UIAlertAction.Style.default, handler:{
             (action: UIAlertAction!) -> Void in
-            let shareMessage = "\(self.selectedPost!.comment!)\n\(self.selectedPost!.imageUrl!)"
-            let urlString = "line://msg/text/?\(shareMessage)"
+            let urlString = "line://msg/text/?\(self.selectedPost!.getShareMessage())"
             let encodedText = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             if let encodedText = encodedText,
                 let url = URL(string: encodedText) {
@@ -73,21 +69,22 @@ class DetailViewController: UIViewController {
                 UIApplication.shared.open(url)
             }
         })
+        
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
             (action: UIAlertAction!) -> Void in
         })
         
-        alert.addAction(photoLibraryAction)
-        alert.addAction(cameraAction)
-        alert.addAction(cancelAction)
+        shareAlert.addAction(twitterAction)
+        shareAlert.addAction(lineAction)
+        shareAlert.addAction(cancelAction)
         
-        self.present(alert, animated: true, completion: nil)
+        self.present(shareAlert, animated: true, completion: nil)
     }
     
     @IBAction func handleDeleteButton(_ sender: Any) {
-        let actionSheet = UIAlertController(title: "削除", message: "削除してもよろしいですか？", preferredStyle: UIAlertController.Style.actionSheet)
+        let deleteAlert = UIAlertController(title: "削除", message: "削除してもよろしいですか？", preferredStyle: UIAlertController.Style.actionSheet)
         
-        let action = UIAlertAction(title: "削除", style: UIAlertAction.Style.default, handler: {
+        let deleteAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
             if FirebaseData.getUser() == nil {
                 print("削除失敗 ユーザがいない")
@@ -109,15 +106,15 @@ class DetailViewController: UIViewController {
             }
         })
         
-        let cancel = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: {
+        let cancelAlert = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: {
             (action: UIAlertAction!) in
             print("キャンセル")
         })
         
-        actionSheet.addAction(action)
-        actionSheet.addAction(cancel)
+        deleteAlert.addAction(deleteAction)
+        deleteAlert.addAction(cancelAlert)
         
-        self.present(actionSheet, animated: true, completion: nil)
+        self.present(deleteAlert, animated: true, completion: nil)
     }
     
     @objc func handleEditButton(_ sender: UIBarButtonItem) {

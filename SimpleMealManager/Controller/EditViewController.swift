@@ -18,6 +18,7 @@ class EditViewController: UIViewController {
         super.viewDidLoad()
         
         if self.selectedPost != nil {
+            // 選択された内容をViewに反映
             self.commentTextView.text = selectedPost?.comment
             self.commentTextView.togglePlaceholder()
             self.navigationItem.title = "編集"
@@ -33,6 +34,7 @@ class EditViewController: UIViewController {
     }
     
     @objc func handleSaveButton(_ sender: UIBarButtonItem) {
+        // DBにコメントを更新する
         let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
         let comment = ["comment": commentTextView.text]
         databaseRef.child(self.selectedPost!.id!).updateChildValues(comment as [AnyHashable : Any])

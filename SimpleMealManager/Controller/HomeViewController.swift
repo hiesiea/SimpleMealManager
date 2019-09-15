@@ -42,10 +42,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
                 databaseRef.observe(.childAdded, with: { snapshot in
                     print("DEBUG_PRINT: .childAddedイベントが発生しました")
-                    
-                    // PostDataクラスを生成して受け取ったデータを設定する
-                    if let uid = FirebaseData.getUser()?.uid {
-                        let postData = PostData(snapshot: snapshot, myId: uid)
+                    if (FirebaseData.getUser()?.uid) != nil {
+                        let postData = PostData(snapshot: snapshot)
                         self.postArray.insert(postData, at: 0)
                         
                         // TableViewを再表示する
@@ -54,10 +52,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 })
                 databaseRef.observe(.childRemoved, with: { snapshot in
                     print("DEBUG_PRINT: .childRemovedイベントが発生しました")
-                    // PostDataクラスを生成して受け取ったデータを設定する
-                    if let uid = FirebaseData.getUser()?.uid {
-                        // PostDataクラスを生成して受け取ったデータを設定する
-                        let postData = PostData(snapshot: snapshot, myId: uid)
+                    if (FirebaseData.getUser()?.uid) != nil {
+                        let postData = PostData(snapshot: snapshot)
                         
                         // 保持している配列からidが同じものを探す
                         var index: Int = 0
@@ -78,10 +74,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 // 要素が変更されたら該当のデータをpostArrayから一度削除した後に新しいデータを追加してTableViewを再表示する
                 databaseRef.observe(.childChanged, with: { snapshot in
                     print("DEBUG_PRINT: .childChangedイベントが発生しました")
-                    
-                    if let uid = FirebaseData.getUser()?.uid {
-                        // PostDataクラスを生成して受け取ったデータを設定する
-                        let postData = PostData(snapshot: snapshot, myId: uid)
+                    if (FirebaseData.getUser()?.uid) != nil {
+                        let postData = PostData(snapshot: snapshot)
                         
                         // 保持している配列からidが同じものを探す
                         var index: Int = 0
@@ -140,7 +134,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         // Tag番号を使ってImageViewのインスタンス生成
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
-        imageView.image = self.postArray[indexPath.row].image
+        imageView.image = self.postArray[indexPath.row].getUIImage()
         
         return cell
     }
