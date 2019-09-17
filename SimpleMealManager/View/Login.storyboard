@@ -57,7 +57,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="jWh-s5-2Rz" firstAttribute="top" secondItem="AIe-FH-NLi" secondAttribute="top" constant="80" id="DyE-lI-xFS"/>
                             <constraint firstItem="KO4-OQ-vZB" firstAttribute="top" secondItem="Q4M-rq-Q48" secondAttribute="bottom" constant="10" id="MpJ-AG-mYX"/>
