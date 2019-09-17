@@ -163,8 +163,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I76-aV-bEp" customClass="InspectableTextView" customModule="SimpleMealManager" customModuleProvider="target">
-                                <rect key="frame" x="16" y="64" width="343" height="549"/>
+                                <rect key="frame" x="16" y="74" width="343" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="94e-sY-F2e"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
@@ -174,8 +177,7 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="j6y-Yb-n12" firstAttribute="bottom" secondItem="I76-aV-bEp" secondAttribute="bottom" constant="10" id="E9Z-cD-iEo"/>
-                            <constraint firstItem="I76-aV-bEp" firstAttribute="top" secondItem="j6y-Yb-n12" secondAttribute="top" id="dQS-jK-tw8"/>
+                            <constraint firstItem="I76-aV-bEp" firstAttribute="top" secondItem="j6y-Yb-n12" secondAttribute="top" constant="10" id="dQS-jK-tw8"/>
                             <constraint firstItem="j6y-Yb-n12" firstAttribute="trailing" secondItem="I76-aV-bEp" secondAttribute="trailing" constant="16" id="uei-ey-fWT"/>
                             <constraint firstItem="I76-aV-bEp" firstAttribute="leading" secondItem="j6y-Yb-n12" secondAttribute="leading" constant="16" id="vwi-uz-aTm"/>
                         </constraints>
@@ -187,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOe-Jv-dUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2974" y="103"/>
+            <point key="canvasLocation" x="2973.5999999999999" y="102.99850074962519"/>
         </scene>
     </scenes>
     <resources>

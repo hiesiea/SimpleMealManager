@@ -23,6 +23,9 @@ class DetailViewController: UIViewController {
             // 選択された内容をViewに反映
             self.imageView.image = self.selectedPost?.getUIImage()
             self.commentTextView.text = self.selectedPost?.comment
+            if self.commentTextView.text.isEmpty {
+                self.commentTextView.text = "コメントが未記入です"
+            }
             self.navigationItem.title = self.selectedPost?.formatDatetoString()
         } else {
             // ホーム画面に戻る
