@@ -11,6 +11,7 @@ import Firebase
 import SVProgressHUD
 
 class DetailViewController: UIViewController {
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentTextView: UITextView!
     
@@ -22,6 +23,10 @@ class DetailViewController: UIViewController {
         if self.selectedPost != nil {
             // 選択された内容をViewに反映
             self.imageView.image = self.selectedPost?.getUIImage()
+            self.titleTextField.text = self.selectedPost?.title
+            if self.titleTextField.text!.isEmpty {
+                self.titleTextField.text = "料理名が未記入です"
+            }
             self.commentTextView.text = self.selectedPost?.comment
             if self.commentTextView.text.isEmpty {
                 self.commentTextView.text = "コメントが未記入です"

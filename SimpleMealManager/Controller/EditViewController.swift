@@ -11,6 +11,7 @@ import Firebase
 import SVProgressHUD
 
 class EditViewController: UIViewController {
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var commentTextView: InspectableTextView!
     var selectedPost: PostData? = nil
     
@@ -19,6 +20,7 @@ class EditViewController: UIViewController {
         
         if self.selectedPost != nil {
             // 選択された内容をViewに反映
+            self.titleTextField.text = selectedPost?.title
             self.commentTextView.text = selectedPost?.comment
             self.commentTextView.togglePlaceholder()
             self.navigationItem.title = "編集"
@@ -36,7 +38,7 @@ class EditViewController: UIViewController {
     @objc func handleSaveButton(_ sender: UIBarButtonItem) {
         // DBにコメントを更新する
         let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
-        let comment = ["comment": commentTextView.text]
+        let comment = ["title": titleTextField.text, "comment": commentTextView.text]
         databaseRef.child(self.selectedPost!.id!).updateChildValues(comment as [AnyHashable : Any])
         print("\(selectedPost!.id!)を編集")
         

@@ -12,6 +12,7 @@ import Firebase
 class PostData: NSObject {
     var id: String?
     var imageUrl: String?
+    var title: String?
     var comment: String?
     var date: Date?
     private var image: UIImage?
@@ -22,8 +23,8 @@ class PostData: NSObject {
         
         let valueDictionary = snapshot.value as! [String: Any]
         
-        imageUrl = valueDictionary["imageUrl"] as? String
-        
+        self.imageUrl = valueDictionary["imageUrl"] as? String
+        self.title = valueDictionary["title"] as? String
         self.comment = valueDictionary["comment"] as? String
         
         let time = valueDictionary["time"] as? String
@@ -61,11 +62,13 @@ class PostData: NSObject {
     // シェア用のメッセージを返す
     func getShareMessage() -> String {
         var shareMessage = String()
-        if self.comment!.isEmpty {
-            shareMessage.append(self.imageUrl!)
-        } else {
-            shareMessage.append("\(self.comment!)\n\(self.imageUrl!)")
+        if !self.title!.isEmpty {
+            shareMessage.append("料理名：\(self.title!)\n")
         }
+        if !self.comment!.isEmpty {
+            shareMessage.append("コメント：\(self.comment!)\n")
+        }
+        shareMessage.append(self.imageUrl!)
         return shareMessage
     }
 }

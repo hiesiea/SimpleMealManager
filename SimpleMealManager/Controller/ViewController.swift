@@ -187,7 +187,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 let imageUrl = downloadURL.absoluteString
                 
                 // 辞書を作成してFirebaseに保存する
-                let postDic = ["imageUrl": imageUrl, "time": String(time), "comment": String()]
+                let postDic = ["imageUrl": imageUrl, "time": String(time), "title": String(), "comment": String()]
                 databaseRef.child(key).setValue(postDic)
                 print("保存されました！")
                 

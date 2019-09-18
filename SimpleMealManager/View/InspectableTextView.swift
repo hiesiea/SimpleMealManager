@@ -35,7 +35,7 @@ import UIKit
     
     /// プレースホルダーを設定する
     private func configurePlaceholder() {
-        placeholderLabel.textColor = UIColor.gray
+        placeholderLabel.textColor = UIColor.lightGray
         addSubview(placeholderLabel)
     }
     
