@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentTextView: UITextView!
     
+    // 選択された投稿情報
     var selectedPost: PostData? = nil
     
     override func viewDidLoad() {
@@ -95,18 +96,17 @@ class DetailViewController: UIViewController {
         let deleteAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
             if FirebaseData.getUser() == nil {
-                print("削除失敗 ユーザがいない")
                 SVProgressHUD.showSuccess(withStatus: "削除に失敗しました")
             }
             let storageRef = FirebaseData.getPostsStorageReference(uid: FirebaseData.getUser()!.uid)
             storageRef.child(self.selectedPost!.id! + Const.ImageExtension).delete { error in
                 if let error = error {
-                    print("削除失敗 \(error.localizedDescription)")
+                    print("DEBUG_PRINT: 削除失敗 \(error.localizedDescription)")
                     SVProgressHUD.showSuccess(withStatus: "削除に失敗しました")
                 } else {
                     let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
                     databaseRef.child(self.selectedPost!.id!).removeValue()
-                    print("\(self.selectedPost!.id!)を削除")
+                    print("DEBUG_PRINT: \(self.selectedPost!.id!)を削除")
                     SVProgressHUD.showSuccess(withStatus: "削除しました")
                     // ホーム画面に戻る
                     self.navigationController?.popToRootViewController(animated: true)
@@ -116,7 +116,7 @@ class DetailViewController: UIViewController {
         
         let cancelAlert = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: {
             (action: UIAlertAction!) in
-            print("キャンセル")
+            print("DEBUG_PRINT: 削除をキャンセル")
         })
         
         deleteAlert.addAction(deleteAction)

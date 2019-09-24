@@ -13,6 +13,8 @@ import SVProgressHUD
 class EditViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var commentTextView: InspectableTextView!
+    
+    // 選択された投稿情報
     var selectedPost: PostData? = nil
     
     override func viewDidLoad() {

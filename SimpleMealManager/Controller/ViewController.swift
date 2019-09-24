@@ -40,7 +40,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // currentUserがnilならログインしていない
         if Auth.auth().currentUser == nil {
-            // ログインしていないときの処理
+            // ログインしていないときはログイン画面に遷移する
             self.present(self.loginViewController!, animated: true, completion: nil)
         }
     }
@@ -156,7 +156,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // ユーザが存在するか
         if FirebaseData.getUser() == nil {
-            print("ユーザがいない")
+            print("DEBUG_PRINT: ユーザがいない")
             SVProgressHUD.showError(withStatus: "投稿に失敗しました")
             return
         }
@@ -164,7 +164,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // 保存用のkey発行
         let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
         guard let key = databaseRef.childByAutoId().key else {
-            print("keyの発行に失敗")
+            print("DEBUG_PRINT: keyの発行に失敗")
             SVProgressHUD.showError(withStatus: "投稿に失敗しました")
             return
         }
@@ -177,7 +177,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         storageRef.child(key + Const.ImageExtension).putData(data, metadata: nil) { (metadata, error) in
             storageRef.child(key + Const.ImageExtension).downloadURL { (url, error) in
                 guard let downloadURL = url else {
-                    print("保存失敗 \(error.debugDescription)")
+                    print("DEBUG_PRINT: 保存失敗 \(error.debugDescription)")
                     SVProgressHUD.showError(withStatus: "投稿に失敗しました")
                     return
                 }
@@ -189,7 +189,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 // 辞書を作成してFirebaseに保存する
                 let postDic = ["imageUrl": imageUrl, "time": String(time), "title": String(), "comment": String()]
                 databaseRef.child(key).setValue(postDic)
-                print("保存されました！")
+                print("DEBUG_PRINT: 保存されました！")
                 
                 SVProgressHUD.dismiss()
             }

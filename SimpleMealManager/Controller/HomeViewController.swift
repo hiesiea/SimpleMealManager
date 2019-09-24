@@ -47,7 +47,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     if (snapshot.childrenCount < 1) {
                         print("DEBUG_PRINT: データがありません")
                         
-                        // HUDで処理中を表示
                         SVProgressHUD.dismiss()
                     }
                 }
@@ -60,7 +59,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         // TableViewを再表示する
                         self.collectionView.reloadData()
                         
-                        // HUDで処理中を表示
                         SVProgressHUD.dismiss()
                     }
                 })
@@ -126,8 +124,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 let databaseRef = FirebaseData.getPostsDatabaseReferenceLogout()
                 databaseRef.removeAllObservers()
                 
-                // DatabaseのobserveEventが上記コードにより解除されたため
-                // falseとする
+                // DatabaseのobserveEventが上記コードにより解除されたためfalseとする
                 self.observing = false
             }
         }
@@ -165,7 +162,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 }
 
 extension HomeViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
-    /// データが空の状態の時に表示したい属性付きタイトル文字列
+    // データが空の状態の時に表示したい属性付きタイトル文字列
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         return NSAttributedString(string: "データがありません")
     }
