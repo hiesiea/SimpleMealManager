@@ -13,6 +13,7 @@ target 'SimpleMealManager' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'DZNEmptyDataSet'
 
   target 'SimpleMealManagerTests' do
     inherit! :search_paths
