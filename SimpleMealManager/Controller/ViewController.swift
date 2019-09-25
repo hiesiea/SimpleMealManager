@@ -28,18 +28,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     private let settingViewController: UIViewController? = {
         // ViewControllerを設定する
-        let loginStoryBoard: UIStoryboard = UIStoryboard(name: "Setting", bundle: nil)
-        let viewController = loginStoryBoard.instantiateInitialViewController()
+        let settingStoryBoard: UIStoryboard = UIStoryboard(name: "Setting", bundle: nil)
+        let viewController = settingStoryBoard.instantiateInitialViewController()
         return viewController
     }()
     
-    private var esTabBarController: ESTabBarController? = nil
+    private var esTabBarController: ESTabBarController = ESTabBarController(tabIconNames: ["home", "camera", "setting"])
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // currentUserがnilならログインしていない
-        if Auth.auth().currentUser == nil {
+        if FirebaseData.getUser() == nil {
             // ログインしていないときはログイン画面に遷移する
             self.present(self.loginViewController!, animated: true, completion: nil)
         }
@@ -72,7 +72,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             SVProgressHUD.showError(withStatus: "投稿に失敗しました")
         }
         picker.dismiss(animated: true, completion: nil)
-        esTabBarController?.setSelectedIndex(0, animated: false)
+        esTabBarController.setSelectedIndex(0, animated: false)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -80,34 +80,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     private func setupTab() {
-        // 画像のファイル名を指定してESTabBarControllerを作成する
-        esTabBarController = ESTabBarController(tabIconNames: ["home", "camera", "setting"])
-        
         // 背景色、選択時の色を設定する
-        esTabBarController?.selectedColor = UIColor(red: 1.0, green: 0.44, blue: 0.11, alpha: 1)
-        esTabBarController?.buttonsBackgroundColor = UIColor(red: 249, green: 249, blue: 249, alpha: 1)
-        esTabBarController?.selectionIndicatorHeight = 3
+        esTabBarController.selectedColor = UIColor(red: 1.0, green: 0.44, blue: 0.11, alpha: 1)
+        esTabBarController.buttonsBackgroundColor = UIColor(red: 249, green: 249, blue: 249, alpha: 1)
+        esTabBarController.selectionIndicatorHeight = 3
         
         // 作成したESTabBarControllerを親のViewController（＝self）に追加する
-        addChild(esTabBarController!)
-        let tabBarView = esTabBarController?.view!
-        tabBarView?.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tabBarView!)
+        addChild(esTabBarController)
+        let tabBarView = esTabBarController.view!
+        tabBarView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tabBarView)
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            (tabBarView?.topAnchor.constraint(equalTo: safeArea.topAnchor))!,
-            (tabBarView?.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor))!,
-            (tabBarView?.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor))!,
-            (tabBarView?.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor))!,
-            ])
-        esTabBarController?.didMove(toParent: self)
+            (tabBarView.topAnchor.constraint(equalTo: safeArea.topAnchor)),
+            (tabBarView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)),
+            (tabBarView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor)),
+            (tabBarView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)),
+        ])
+        esTabBarController.didMove(toParent: self)
         
-        esTabBarController?.setView(self.homeViewController, at: 0)
-        esTabBarController?.setView(self.settingViewController, at: 2)
+        esTabBarController.setView(self.homeViewController, at: 0)
+        esTabBarController.setView(self.settingViewController, at: 2)
         
         // 真ん中のタブはボタンとして扱う
-        esTabBarController?.highlightButton(at: 1)
-        esTabBarController?.setAction({
+        esTabBarController.highlightButton(at: 1)
+        esTabBarController.setAction({
             self.displayPostAlert()
         }, at: 1)
     }
@@ -215,7 +212,7 @@ extension UIImage {
 }
 
 extension UIImage.Orientation {
-    /// 画像が横向きであるか
+    // 画像が横向きであるか
     var isLandscape: Bool {
         switch self {
         case .up, .down, .upMirrored, .downMirrored:
@@ -229,7 +226,7 @@ extension UIImage.Orientation {
 }
 
 extension CGRect {
-    /// 反転させたサイズを返す
+    // 反転させたサイズを返す
     var switched: CGRect {
         return CGRect(x: minY, y: minX, width: height, height: width)
     }

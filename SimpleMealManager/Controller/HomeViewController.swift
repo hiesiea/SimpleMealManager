@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("DEBUG_PRINT: viewDidLoad")
         
         // レイアウトを調整
         let layout = UICollectionViewFlowLayout()
@@ -115,6 +116,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
         } else {
             if self.observing == true {
+                print("DEBUG_PRINT: ログアウトを検知しました")
                 // ログアウトを検出したら、一旦テーブルをクリアしてオブザーバーを削除する。
                 // テーブルをクリアする
                 self.postArray = []

@@ -32,7 +32,7 @@ class SettingViewController: UIViewController {
         self.present(self.loginViewController!, animated: true, completion: nil)
         
         // ログイン画面から戻ってきた時のためにホーム画面（index = 0）を選択している状態にしておく
-        let esTabBarController = parent as! ESTabBarController
+        let esTabBarController = self.parent as! ESTabBarController
         esTabBarController.setSelectedIndex(0, animated: false)
     }
     
