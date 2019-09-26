@@ -16,6 +16,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // ViewControllerを設定する
         let homeStoryBoard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let viewController = homeStoryBoard.instantiateInitialViewController()
+        viewController?.modalPresentationStyle = .fullScreen
         return viewController
     }()
     
@@ -23,6 +24,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // ViewControllerを設定する
         let loginStoryBoard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let viewController = loginStoryBoard.instantiateInitialViewController()
+        viewController?.modalPresentationStyle = .fullScreen
         return viewController
     }()
     
@@ -30,6 +32,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // ViewControllerを設定する
         let settingStoryBoard: UIStoryboard = UIStoryboard(name: "Setting", bundle: nil)
         let viewController = settingStoryBoard.instantiateInitialViewController()
+        viewController?.modalPresentationStyle = .fullScreen
         return viewController
     }()
     
