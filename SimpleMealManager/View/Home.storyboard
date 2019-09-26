@@ -225,5 +225,4 @@
     <resources>
         <image name="btn" width="300" height="40"/>
     </resources>
-    <color key="tintColor" red="1" green="0.58823529411764708" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

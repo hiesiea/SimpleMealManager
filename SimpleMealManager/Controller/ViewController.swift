@@ -84,7 +84,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     private func setupTab() {
         // 背景色、選択時の色を設定する
-        esTabBarController.selectedColor = UIColor(red: 1.0, green: 0.44, blue: 0.11, alpha: 1)
+        esTabBarController.selectedColor = UIColor(red: 1.0, green: 0.59, blue: 0.38, alpha: 1)
         esTabBarController.buttonsBackgroundColor = UIColor(red: 249, green: 249, blue: 249, alpha: 1)
         esTabBarController.selectionIndicatorHeight = 3
         
