@@ -15,7 +15,6 @@
 		6038B18D23252B3E001F22F1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6038B18723252B3E001F22F1 /* DetailViewController.swift */; };
 		6038B18E23252B3E001F22F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6038B18823252B3E001F22F1 /* HomeViewController.swift */; };
 		6038B19023252B3E001F22F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6038B18A23252B3E001F22F1 /* LoginViewController.swift */; };
-		6038B19423252B4B001F22F1 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6038B19223252B4B001F22F1 /* Const.swift */; };
 		6038B19523252B4B001F22F1 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6038B19323252B4B001F22F1 /* PostData.swift */; };
 		6038B19C23252B59001F22F1 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6038B19723252B59001F22F1 /* Setting.storyboard */; };
 		6038B19E23252B59001F22F1 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6038B19923252B59001F22F1 /* Home.storyboard */; };
@@ -29,6 +28,7 @@
 		604CAB18231A7FA500B04451 /* SimpleMealManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604CAB17231A7FA500B04451 /* SimpleMealManagerUITests.swift */; };
 		6080D43E2327E058000C1EC3 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6080D43D2327E058000C1EC3 /* EditViewController.swift */; };
 		60AA48742321572300EBEB57 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60AA48732321572300EBEB57 /* GoogleService-Info.plist */; };
+		60CCD1CF233EFF3E003C0871 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CCD1CE233EFF3E003C0871 /* Const.swift */; };
 		F12E6AEEBF0533C73B0BCBC7 /* Pods_SimpleMealManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E4F3E7435565A975B2C143A /* Pods_SimpleMealManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +60,6 @@
 		6038B18723252B3E001F22F1 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		6038B18823252B3E001F22F1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6038B18A23252B3E001F22F1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		6038B19223252B4B001F22F1 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		6038B19323252B4B001F22F1 /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		6038B19723252B59001F22F1 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		6038B19923252B59001F22F1 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -80,6 +79,7 @@
 		604CAB19231A7FA500B04451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6080D43D2327E058000C1EC3 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		60AA48732321572300EBEB57 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		60CCD1CE233EFF3E003C0871 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		62976D5E8D393F4080B8EC2E /* Pods-SimpleMealManagerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleMealManagerUITests.debug.xcconfig"; path = "Target Support Files/Pods-SimpleMealManagerUITests/Pods-SimpleMealManagerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6348F79937523E80ECC62DFF /* Pods_SimpleMealManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleMealManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F65D0AA1B6E015E13FC515 /* Pods-SimpleMealManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleMealManager.debug.xcconfig"; path = "Target Support Files/Pods-SimpleMealManager/Pods-SimpleMealManager.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,7 +154,6 @@
 		6038B19123252B4B001F22F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6038B19223252B4B001F22F1 /* Const.swift */,
 				6038B19323252B4B001F22F1 /* PostData.swift */,
 				601E90CC232D455D00143810 /* FirebaseData.swift */,
 			);
@@ -203,6 +202,7 @@
 				604CAB00231A7FA500B04451 /* LaunchScreen.storyboard */,
 				6038B18423252B3E001F22F1 /* Controller */,
 				604CAB03231A7FA500B04451 /* Info.plist */,
+				60CCD1CD233EFF3E003C0871 /* Common */,
 				60AA48732321572300EBEB57 /* GoogleService-Info.plist */,
 				6038B19623252B59001F22F1 /* View */,
 				6038B19123252B4B001F22F1 /* Model */,
@@ -226,6 +226,14 @@
 				604CAB19231A7FA500B04451 /* Info.plist */,
 			);
 			path = SimpleMealManagerUITests;
+			sourceTree = "<group>";
+		};
+		60CCD1CD233EFF3E003C0871 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				60CCD1CE233EFF3E003C0871 /* Const.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -458,12 +466,12 @@
 				6038B18E23252B3E001F22F1 /* HomeViewController.swift in Sources */,
 				6038B18C23252B3E001F22F1 /* ViewController.swift in Sources */,
 				604CAAF8231A7FA400B04451 /* AppDelegate.swift in Sources */,
-				6038B19423252B4B001F22F1 /* Const.swift in Sources */,
 				6038B18B23252B3E001F22F1 /* SettingViewController.swift in Sources */,
 				6038B18D23252B3E001F22F1 /* DetailViewController.swift in Sources */,
 				60399A61232C905D006CF527 /* InspectableTextView.swift in Sources */,
 				6080D43E2327E058000C1EC3 /* EditViewController.swift in Sources */,
 				601E90CD232D455D00143810 /* FirebaseData.swift in Sources */,
+				60CCD1CF233EFF3E003C0871 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
