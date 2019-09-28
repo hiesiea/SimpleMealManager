@@ -66,7 +66,7 @@
 		6038B19923252B59001F22F1 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		6038B19A23252B59001F22F1 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		60399A60232C905D006CF527 /* InspectableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTextView.swift; sourceTree = "<group>"; };
-		604CAAF4231A7FA400B04451 /* SimpleMealManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleMealManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		604CAAF4231A7FA400B04451 /* かんたん食事管理.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "かんたん食事管理.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		604CAAF7231A7FA400B04451 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		604CAAFC231A7FA400B04451 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		604CAAFE231A7FA500B04451 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		604CAAF5231A7FA400B04451 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				604CAAF4231A7FA400B04451 /* SimpleMealManager.app */,
+				604CAAF4231A7FA400B04451 /* かんたん食事管理.app */,
 				604CAB08231A7FA500B04451 /* SimpleMealManagerTests.xctest */,
 				604CAB13231A7FA500B04451 /* SimpleMealManagerUITests.xctest */,
 			);
@@ -247,7 +247,7 @@
 			);
 			name = SimpleMealManager;
 			productName = SimpleMealManager;
-			productReference = 604CAAF4231A7FA400B04451 /* SimpleMealManager.app */;
+			productReference = 604CAAF4231A7FA400B04451 /* かんたん食事管理.app */;
 			productType = "com.apple.product-type.application";
 		};
 		604CAB07231A7FA500B04451 /* SimpleMealManagerTests */ = {
@@ -642,12 +642,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B6VWA2QJ88;
 				INFOPLIST_FILE = SimpleMealManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kmdhtsh.SimpleMealManager;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "かんたん食事管理";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -661,12 +662,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B6VWA2QJ88;
 				INFOPLIST_FILE = SimpleMealManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kmdhtsh.SimpleMealManager;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "かんたん食事管理";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
