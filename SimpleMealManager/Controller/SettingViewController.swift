@@ -18,7 +18,6 @@ class SettingViewController: UIViewController {
         // ViewControllerを設定する
         let loginStoryBoard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let viewController = loginStoryBoard.instantiateInitialViewController()
-        viewController?.modalPresentationStyle = .fullScreen
         return viewController
     }()
     

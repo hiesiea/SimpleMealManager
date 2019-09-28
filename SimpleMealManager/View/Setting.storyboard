@@ -11,7 +11,7 @@
         <!--Setting View Controller-->
         <scene sceneID="Xxf-hI-ONx">
             <objects>
-                <viewController storyboardIdentifier="Setting" id="FKl-Xh-6VR" customClass="SettingViewController" customModule="SimpleMealManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Setting" modalPresentationStyle="fullScreen" id="FKl-Xh-6VR" customClass="SettingViewController" customModule="SimpleMealManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VbT-WI-d0m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

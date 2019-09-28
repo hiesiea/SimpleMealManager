@@ -11,7 +11,7 @@
         <!--Empty Data Set Delegate-->
         <scene sceneID="MZC-Lc-ovn">
             <objects>
-                <viewController storyboardIdentifier="Home" id="UBG-q8-lCP" customClass="HomeViewController" customModule="SimpleMealManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" modalPresentationStyle="fullScreen" id="UBG-q8-lCP" customClass="HomeViewController" customModule="SimpleMealManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lb1-cl-pGk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,7 +78,7 @@
         <!--Navigation Controller-->
         <scene sceneID="6QJ-lZ-Nae">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ah1-6V-ULM" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ah1-6V-ULM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iF1-4u-tf6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -96,7 +96,7 @@
         <!--Detail View Controller-->
         <scene sceneID="h9j-mc-RyD">
             <objects>
-                <viewController id="tmm-6H-iga" customClass="DetailViewController" customModule="SimpleMealManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="tmm-6H-iga" customClass="DetailViewController" customModule="SimpleMealManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WXb-Fc-kgk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,7 +178,7 @@
         <!--Edit View Controller-->
         <scene sceneID="upd-DV-aAl">
             <objects>
-                <viewController id="2wn-Mp-GS1" customClass="EditViewController" customModule="SimpleMealManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="2wn-Mp-GS1" customClass="EditViewController" customModule="SimpleMealManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d7h-WG-ChZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

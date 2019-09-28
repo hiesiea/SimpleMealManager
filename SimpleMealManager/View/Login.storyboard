@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="FvS-Hj-k6d">
             <objects>
-                <viewController storyboardIdentifier="Login" id="YZs-eN-4th" customClass="LoginViewController" customModule="SimpleMealManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" modalPresentationStyle="fullScreen" id="YZs-eN-4th" customClass="LoginViewController" customModule="SimpleMealManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lk7-cf-8Zg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
