@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import SVProgressHUD
 
 class EditViewController: UIViewController {
@@ -16,6 +15,8 @@ class EditViewController: UIViewController {
     
     // 選択された投稿情報
     var selectedPost: PostData? = nil
+    
+    private let firebaseData = FirebaseData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +40,13 @@ class EditViewController: UIViewController {
     
     @objc func handleSaveButton(_ sender: UIBarButtonItem) {
         // DBにコメントを更新する
-        let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
         let comment = ["title": titleTextField.text, "comment": commentTextView.text]
-        databaseRef.child(self.selectedPost!.id!).updateChildValues(comment as [AnyHashable : Any])
-        print("\(selectedPost!.id!)を編集")
-        
-        // ホーム画面に戻る
-        self.navigationController?.popToRootViewController(animated: true)
-        SVProgressHUD.showSuccess(withStatus: "編集しました")
+        firebaseData.update(id: selectedPost!.id!, values: comment as [AnyHashable : Any]) {
+            print("\(self.selectedPost!.id!)を編集")
+
+            // ホーム画面に戻る
+            self.navigationController?.popToRootViewController(animated: true)
+            SVProgressHUD.showSuccess(withStatus: "編集しました")
+        }
     }
 }
