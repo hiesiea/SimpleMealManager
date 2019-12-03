@@ -9,10 +9,14 @@
 import UIKit
 import Firebase
 import SVProgressHUD
+import RxFirebase
+import RxSwift
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var mailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    private let disposeBag = DisposeBag()
     
     @IBAction func handleLoginButton(_ sender: Any) {
         if let address = mailAddressTextField.text, let password = passwordTextField.text {
@@ -26,22 +30,20 @@ class LoginViewController: UIViewController {
             // HUDで処理中を表示
             SVProgressHUD.show()
             
-            Auth.auth().signIn(withEmail: address, password: password) { user, error in
-                if let error = error {
+            Auth.auth().rx.signIn(withEmail: address, password: password)
+                .subscribe(onNext: { authResult in
+                    print("DEBUG_PRINT: ログインに成功しました")
+                    
+                    // HUDを消す
+                    SVProgressHUD.dismiss()
+                    self.clearTextField()
+                    
+                    // 画面を閉じてViewControllerに戻る
+                    self.dismiss(animated: true, completion: nil)
+                }, onError: { error in
                     print("DEBUG_PRINT: " + error.localizedDescription)
                     SVProgressHUD.showError(withStatus: "サインインに失敗しました")
-                    return
-                }
-                print("DEBUG_PRINT: ログインに成功しました")
-                
-                // HUDを消す
-                SVProgressHUD.dismiss()
-                
-                self.clearTextField()
-                
-                // 画面を閉じてViewControllerに戻る
-                self.dismiss(animated: true, completion: nil)
-            }
+                }).disposed(by: disposeBag)
         }
     }
     
@@ -59,23 +61,21 @@ class LoginViewController: UIViewController {
             SVProgressHUD.show()
             
             // アドレスとパスワードでユーザー作成。ユーザー作成に成功すると、自動的にログインする
-            Auth.auth().createUser(withEmail: mailAddress, password: password) { user, error in
-                if let error = error {
-                    // エラーがあったら原因をprintして、returnすることで以降の処理を実行せずに処理を終了する
+            Auth.auth().rx.createUser(withEmail: mailAddress, password: password)
+                .subscribe(onNext: { authResult in
+                    print("DEBUG_PRINT: ユーザー作成に成功しました")
+                    
+                    // HUDを消す
+                    SVProgressHUD.dismiss()
+                    self.clearTextField()
+                    
+                    // 画面を閉じてViewControllerに戻る
+                    self.dismiss(animated: true, completion: nil)
+                }, onError: { error in
+                    // エラーがあったら原因をprint
                     print("DEBUG_PRINT: " + error.localizedDescription)
                     SVProgressHUD.showError(withStatus: "ユーザー作成に失敗しました")
-                    return
-                }
-                print("DEBUG_PRINT: ユーザー作成に成功しました")
-                
-                // HUDを消す
-                SVProgressHUD.dismiss()
-                
-                self.clearTextField()
-                
-                // 画面を閉じてViewControllerに戻る
-                self.dismiss(animated: true, completion: nil)
-            }
+                }).disposed(by: disposeBag)
         }
     }
     

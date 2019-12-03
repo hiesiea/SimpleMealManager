@@ -105,18 +105,19 @@ class DetailViewController: UIViewController {
             }
             
             let firebaseData = FirebaseData(uid: currentUser!.uid)
-            firebaseData.storage.child(self.selectedPost!.id! + Const.ImageExtension).delete { error in
-                if let error = error {
-                    print("DEBUG_PRINT: 削除失敗 \(error.localizedDescription)")
-                    SVProgressHUD.showSuccess(withStatus: "削除に失敗しました")
-                } else {
+            firebaseData.storage.child(self.selectedPost!.id! + Const.ImageExtension)
+                .rx
+                .delete()
+                .subscribe(onNext: {
                     firebaseData.database.child(self.selectedPost!.id!).removeValue()
                     print("DEBUG_PRINT: \(self.selectedPost!.id!)を削除")
                     SVProgressHUD.showSuccess(withStatus: "削除しました")
                     // ホーム画面に戻る
                     self.navigationController?.popToRootViewController(animated: true)
-                }
-            }
+                }, onError: { error in
+                    print("DEBUG_PRINT: 削除失敗 \(error.localizedDescription)")
+                    SVProgressHUD.showSuccess(withStatus: "削除に失敗しました")
+                }).disposed(by: self.disposeBag)
         })
         
         let cancelAlert = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: {
