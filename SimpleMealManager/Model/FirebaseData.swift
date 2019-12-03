@@ -8,16 +8,14 @@
 
 import Firebase
 import RxFirebase
-import RxSwift
 
 class FirebaseData {
     private static let PostPath = "posts"
     private static let StorageUrl = "gs://simplemealmanager-3df92.appspot.com/"
-    private let disposeBag = DisposeBag()
     
-    private var user: User?
-    private var database: DatabaseReference
-    private var storage: StorageReference
+    private(set) var user: User?
+    private(set) var database: DatabaseReference
+    private(set) var storage: StorageReference
     
     static func getUser() -> User? {
         return Auth.auth().currentUser
@@ -39,13 +37,5 @@ class FirebaseData {
         user = Auth.auth().currentUser
         database = Database.database().reference().child(FirebaseData.PostPath).child(user!.uid)
         storage = Storage.storage().reference(forURL: FirebaseData.StorageUrl).child(FirebaseData.PostPath).child(user!.uid)
-    }
-    
-    func update(id: String, values: [AnyHashable: Any], onSuccess: @escaping() -> Void) {
-        database.child(id).rx.updateChildValues(values)
-            .subscribe({ _ in
-                // Success
-                onSuccess()
-            }).disposed(by: disposeBag)
     }
 }

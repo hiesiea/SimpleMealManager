@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import RxSwift
 
 class EditViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
@@ -17,6 +18,7 @@ class EditViewController: UIViewController {
     var selectedPost: PostData? = nil
     
     private let firebaseData = FirebaseData()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +43,17 @@ class EditViewController: UIViewController {
     @objc func handleSaveButton(_ sender: UIBarButtonItem) {
         // DBにコメントを更新する
         let comment = ["title": titleTextField.text, "comment": commentTextView.text]
-        firebaseData.update(id: selectedPost!.id!, values: comment as [AnyHashable : Any]) {
-            print("\(self.selectedPost!.id!)を編集")
-
-            // ホーム画面に戻る
-            self.navigationController?.popToRootViewController(animated: true)
-            SVProgressHUD.showSuccess(withStatus: "編集しました")
-        }
+        
+        self.firebaseData.database.child(self.selectedPost!.id!)
+            .rx
+            .updateChildValues(comment as [AnyHashable : Any])
+            .subscribe({ _ in
+                // Success
+                print("\(self.selectedPost!.id!)を編集")
+                
+                // ホーム画面に戻る
+                self.navigationController?.popToRootViewController(animated: true)
+                SVProgressHUD.showSuccess(withStatus: "編集しました")
+            }).disposed(by: disposeBag)
     }
 }
