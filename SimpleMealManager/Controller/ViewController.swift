@@ -11,6 +11,7 @@ import UIKit
 import SVProgressHUD
 import RxSwift
 import Firebase
+import RxFirebase
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     private let homeViewController: UIViewController? = {
@@ -170,17 +171,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let data = image.jpegData(compressionQuality: 0.8)! as Data
         
         // Storageに画像を保存
-        self.firebaseData.storage.child(key + Const.ImageExtension).putData(data, metadata: nil) { (metadata, error) in
-            self.firebaseData.storage.child(key + Const.ImageExtension).downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                    print("DEBUG_PRINT: 保存失敗 \(error.debugDescription)")
-                    SVProgressHUD.showError(withStatus: "投稿に失敗しました")
-                    return
-                }
-                
+        self.firebaseData.storage.child(key + Const.ImageExtension)
+            .rx
+            .putData(data)
+            .subscribe(onNext: { metadata in
+                self.setValueDatabase(key: key)
+            }, onError: { error in
+                print("DEBUG_PRINT: 保存失敗 \(error)")
+                SVProgressHUD.showError(withStatus: "投稿に失敗しました")
+            }).disposed(by: disposeBag)
+    }
+    
+    private func setValueDatabase(key: String) {
+        self.firebaseData.storage.child(key + Const.ImageExtension)
+            .rx
+            .downloadURL()
+            .subscribe(onNext: { url in
                 // postDataに必要な情報を取得しておく
                 let time = Date.timeIntervalSinceReferenceDate
-                let imageUrl = downloadURL.absoluteString
+                let imageUrl = url.absoluteString
                 
                 // 辞書を作成してFirebaseに保存する
                 let postDic = ["imageUrl": imageUrl, "time": String(time), "title": String(), "comment": String()]
@@ -188,8 +197,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 print("DEBUG_PRINT: 保存されました！")
                 
                 SVProgressHUD.dismiss()
-            }
-        }
+            }, onError: { error in
+                print("DEBUG_PRINT: 保存失敗 \(error)")
+                SVProgressHUD.showError(withStatus: "投稿に失敗しました")
+            }).disposed(by: disposeBag)
     }
 }
 
