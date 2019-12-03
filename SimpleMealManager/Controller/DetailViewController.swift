@@ -9,11 +9,14 @@
 import UIKit
 import Firebase
 import SVProgressHUD
+import RxSwift
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentTextView: UITextView!
+    
+    private let disposeBag = DisposeBag()
     
     // 選択された投稿情報
     var selectedPost: PostData? = nil
@@ -95,17 +98,19 @@ class DetailViewController: UIViewController {
         
         let deleteAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
-            if FirebaseData.getUser() == nil {
+            
+            let currentUser = Auth.auth().currentUser
+            if currentUser == nil {
                 SVProgressHUD.showSuccess(withStatus: "削除に失敗しました")
             }
-            let storageRef = FirebaseData.getPostsStorageReference(uid: FirebaseData.getUser()!.uid)
-            storageRef.child(self.selectedPost!.id! + Const.ImageExtension).delete { error in
+            
+            let firebaseData = FirebaseData(uid: currentUser!.uid)
+            firebaseData.storage.child(self.selectedPost!.id! + Const.ImageExtension).delete { error in
                 if let error = error {
                     print("DEBUG_PRINT: 削除失敗 \(error.localizedDescription)")
                     SVProgressHUD.showSuccess(withStatus: "削除に失敗しました")
                 } else {
-                    let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
-                    databaseRef.child(self.selectedPost!.id!).removeValue()
+                    firebaseData.database.child(self.selectedPost!.id!).removeValue()
                     print("DEBUG_PRINT: \(self.selectedPost!.id!)を削除")
                     SVProgressHUD.showSuccess(withStatus: "削除しました")
                     // ホーム画面に戻る

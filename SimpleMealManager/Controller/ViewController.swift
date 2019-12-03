@@ -8,8 +8,9 @@
 
 import ESTabBarController
 import UIKit
-import Firebase
 import SVProgressHUD
+import RxSwift
+import Firebase
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     private let homeViewController: UIViewController? = {
@@ -35,13 +36,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     private var esTabBarController: ESTabBarController = ESTabBarController(tabIconNames: ["home", "camera", "setting"])
     
+    private var firebaseData: FirebaseData!
+    
+    private let disposeBag = DisposeBag()
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // currentUserがnilならログインしていない
-        if FirebaseData.getUser() == nil {
+        let currentUser = Auth.auth().currentUser
+        if currentUser == nil {
             // ログインしていないときはログイン画面に遷移する
             self.present(self.loginViewController!, animated: true, completion: nil)
+        } else {
+            self.firebaseData = FirebaseData(uid: currentUser!.uid)
         }
     }
     
@@ -151,16 +159,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     private func uploadImage(image: UIImage) {
         SVProgressHUD.show()
         
-        // ユーザが存在するか
-        if FirebaseData.getUser() == nil {
-            print("DEBUG_PRINT: ユーザがいない")
-            SVProgressHUD.showError(withStatus: "投稿に失敗しました")
-            return
-        }
-        
         // 保存用のkey発行
-        let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
-        guard let key = databaseRef.childByAutoId().key else {
+        guard let key = self.firebaseData?.database.childByAutoId().key else {
             print("DEBUG_PRINT: keyの発行に失敗")
             SVProgressHUD.showError(withStatus: "投稿に失敗しました")
             return
@@ -170,9 +170,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let data = image.jpegData(compressionQuality: 0.8)! as Data
         
         // Storageに画像を保存
-        let storageRef = FirebaseData.getPostsStorageReference(uid: FirebaseData.getUser()!.uid)
-        storageRef.child(key + Const.ImageExtension).putData(data, metadata: nil) { (metadata, error) in
-            storageRef.child(key + Const.ImageExtension).downloadURL { (url, error) in
+        self.firebaseData.storage.child(key + Const.ImageExtension).putData(data, metadata: nil) { (metadata, error) in
+            self.firebaseData.storage.child(key + Const.ImageExtension).downloadURL { (url, error) in
                 guard let downloadURL = url else {
                     print("DEBUG_PRINT: 保存失敗 \(error.debugDescription)")
                     SVProgressHUD.showError(withStatus: "投稿に失敗しました")
@@ -185,7 +184,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 
                 // 辞書を作成してFirebaseに保存する
                 let postDic = ["imageUrl": imageUrl, "time": String(time), "title": String(), "comment": String()]
-                databaseRef.child(key).setValue(postDic)
+                self.firebaseData.database.child(key).setValue(postDic)
                 print("DEBUG_PRINT: 保存されました！")
                 
                 SVProgressHUD.dismiss()

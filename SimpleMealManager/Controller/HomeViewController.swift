@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import Firebase
 import SVProgressHUD
 import ESTabBarController
 import DZNEmptyDataSet
+import RxSwift
+import Firebase
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -20,6 +21,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // DatabaseのobserveEventの登録状態を表す
     private var observing = false
+    
+    private var firebaseData: FirebaseData?
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +39,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewWillAppear(animated)
         print("DEBUG_PRINT: viewWillAppear")
         
-        if FirebaseData.getUser() != nil {
+        let currentUser = Auth.auth().currentUser
+        if currentUser != nil {
+            firebaseData = FirebaseData(uid: currentUser!.uid)
             if self.observing == false {
                 
                 // HUDで処理中を表示
                 SVProgressHUD.show()
                 
                 // 要素が追加されたらpostArrayに追加してTableViewを再表示する
-                let databaseRef = FirebaseData.getPostsDatabaseReference(uid: FirebaseData.getUser()!.uid)
-                databaseRef.observeSingleEvent(of: .value) { snapshot in
+                firebaseData!.database.observeSingleEvent(of: .value) { snapshot in
                     print("DEBUG_PRINT: .valueイベントが発生しました")
                     if (snapshot.childrenCount < 1) {
                         print("DEBUG_PRINT: データがありません")
@@ -51,63 +56,57 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         SVProgressHUD.dismiss()
                     }
                 }
-                databaseRef.observe(.childAdded, with: { snapshot in
+                firebaseData!.database.observe(.childAdded, with: { snapshot in
                     print("DEBUG_PRINT: .childAddedイベントが発生しました")
-                    if (FirebaseData.getUser()?.uid) != nil {
-                        let postData = PostData(snapshot: snapshot)
-                        self.postArray.insert(postData, at: 0)
-                        
-                        // TableViewを再表示する
-                        self.collectionView.reloadData()
-                        
-                        SVProgressHUD.dismiss()
-                    }
+                    let postData = PostData(snapshot: snapshot)
+                    self.postArray.insert(postData, at: 0)
+                    
+                    // TableViewを再表示する
+                    self.collectionView.reloadData()
+                    
+                    SVProgressHUD.dismiss()
                 })
-                databaseRef.observe(.childRemoved, with: { snapshot in
+                firebaseData!.database.observe(.childRemoved, with: { snapshot in
                     print("DEBUG_PRINT: .childRemovedイベントが発生しました")
-                    if (FirebaseData.getUser()?.uid) != nil {
-                        let postData = PostData(snapshot: snapshot)
-                        
-                        // 保持している配列からidが同じものを探す
-                        var index: Int = 0
-                        for post in self.postArray {
-                            if post.id == postData.id {
-                                index = self.postArray.firstIndex(of: post)!
-                                break
-                            }
+                    let postData = PostData(snapshot: snapshot)
+                    
+                    // 保持している配列からidが同じものを探す
+                    var index: Int = 0
+                    for post in self.postArray {
+                        if post.id == postData.id {
+                            index = self.postArray.firstIndex(of: post)!
+                            break
                         }
-                        
-                        // 削除する
-                        self.postArray.remove(at: index)
-                        
-                        // TableViewを再表示する
-                        self.collectionView.reloadData()
                     }
+                    
+                    // 削除する
+                    self.postArray.remove(at: index)
+                    
+                    // TableViewを再表示する
+                    self.collectionView.reloadData()
                 })
                 // 要素が変更されたら該当のデータをpostArrayから一度削除した後に新しいデータを追加してTableViewを再表示する
-                databaseRef.observe(.childChanged, with: { snapshot in
+                firebaseData!.database.observe(.childChanged, with: { snapshot in
                     print("DEBUG_PRINT: .childChangedイベントが発生しました")
-                    if (FirebaseData.getUser()?.uid) != nil {
-                        let postData = PostData(snapshot: snapshot)
-                        
-                        // 保持している配列からidが同じものを探す
-                        var index: Int = 0
-                        for post in self.postArray {
-                            if post.id == postData.id {
-                                index = self.postArray.firstIndex(of: post)!
-                                break
-                            }
+                    let postData = PostData(snapshot: snapshot)
+                    
+                    // 保持している配列からidが同じものを探す
+                    var index: Int = 0
+                    for post in self.postArray {
+                        if post.id == postData.id {
+                            index = self.postArray.firstIndex(of: post)!
+                            break
                         }
-                        
-                        // 差し替えるため一度削除する
-                        self.postArray.remove(at: index)
-                        
-                        // 削除したところに更新済みのデータを追加する
-                        self.postArray.insert(postData, at: index)
-                        
-                        // TableViewを再表示する
-                        self.collectionView.reloadData()
                     }
+                    
+                    // 差し替えるため一度削除する
+                    self.postArray.remove(at: index)
+                    
+                    // 削除したところに更新済みのデータを追加する
+                    self.postArray.insert(postData, at: index)
+                    
+                    // TableViewを再表示する
+                    self.collectionView.reloadData()
                 })
                 
                 // DatabaseのobserveEventが上記コードにより登録されたため
@@ -123,8 +122,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.collectionView.reloadData()
                 
                 // オブザーバーを削除する
-                let databaseRef = FirebaseData.getPostsDatabaseReferenceLogout()
-                databaseRef.removeAllObservers()
+                firebaseData?.database.removeAllObservers()
                 
                 // DatabaseのobserveEventが上記コードにより解除されたためfalseとする
                 self.observing = false
