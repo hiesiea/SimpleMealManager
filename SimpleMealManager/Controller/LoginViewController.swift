@@ -80,7 +80,7 @@ class LoginViewController: UIViewController {
     }
     
     private func clearTextField() {
-        self.mailAddressTextField.text = ""
-        self.passwordTextField.text = ""
+        mailAddressTextField.text = ""
+        passwordTextField.text = ""
     }
 }

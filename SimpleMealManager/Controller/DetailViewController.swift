@@ -24,21 +24,21 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.selectedPost != nil {
+        if selectedPost != nil {
             // 選択された内容をViewに反映
-            self.imageView.image = self.selectedPost?.getUIImage()
-            self.titleTextField.text = self.selectedPost?.title
-            if self.titleTextField.text!.isEmpty {
-                self.titleTextField.text = "料理名が未記入です"
+            imageView.image = selectedPost?.getUIImage()
+            titleTextField.text = selectedPost?.title
+            if titleTextField.text!.isEmpty {
+                titleTextField.text = "料理名が未記入です"
             }
-            self.commentTextView.text = self.selectedPost?.comment
-            if self.commentTextView.text.isEmpty {
-                self.commentTextView.text = "コメントが未記入です"
+            commentTextView.text = selectedPost?.comment
+            if commentTextView.text.isEmpty {
+                commentTextView.text = "コメントが未記入です"
             }
-            self.navigationItem.title = self.selectedPost?.formatDatetoString()
+            navigationItem.title = selectedPost?.formatDatetoString()
         } else {
             // ホーム画面に戻る
-            self.navigationController?.popToRootViewController(animated: true)
+            navigationController?.popToRootViewController(animated: true)
             SVProgressHUD.showError(withStatus: "読み込みに失敗しました")
         }
         
@@ -48,7 +48,7 @@ class DetailViewController: UIViewController {
         
         // 編集ボタンをナビゲーションバーに追加
         let editButtonItem: UIBarButtonItem = UIBarButtonItem(title: "編集", style: .plain, target: self, action: #selector(handleEditButton(_:)))
-        self.navigationItem.setRightBarButton(editButtonItem, animated: true)
+        navigationItem.setRightBarButton(editButtonItem, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -128,10 +128,10 @@ class DetailViewController: UIViewController {
         deleteAlert.addAction(deleteAction)
         deleteAlert.addAction(cancelAlert)
         
-        self.present(deleteAlert, animated: true, completion: nil)
+        present(deleteAlert, animated: true, completion: nil)
     }
     
     @objc func handleEditButton(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "Edit", sender: self.selectedPost)
+        performSegue(withIdentifier: "Edit", sender: selectedPost)
     }
 }

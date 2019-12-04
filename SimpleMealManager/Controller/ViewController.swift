@@ -48,9 +48,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let currentUser = Auth.auth().currentUser
         if currentUser == nil {
             // ログインしていないときはログイン画面に遷移する
-            self.present(self.loginViewController!, animated: true, completion: nil)
+            present(loginViewController!, animated: true, completion: nil)
         } else {
-            self.firebaseData = FirebaseData(uid: currentUser!.uid)
+            firebaseData = FirebaseData(uid: currentUser!.uid)
         }
     }
     
@@ -108,8 +108,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         ])
         esTabBarController.didMove(toParent: self)
         
-        esTabBarController.setView(self.homeViewController, at: 0)
-        esTabBarController.setView(self.settingViewController, at: 2)
+        esTabBarController.setView(homeViewController, at: 0)
+        esTabBarController.setView(settingViewController, at: 2)
         
         // 真ん中のタブはボタンとして扱う
         esTabBarController.highlightButton(at: 1)
@@ -153,7 +153,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         postAlert.addAction(cameraAction)
         postAlert.addAction(cancelAction)
         
-        self.present(postAlert, animated: true, completion: nil)
+        present(postAlert, animated: true, completion: nil)
     }
     
     //Storageに画像を保存する
@@ -161,7 +161,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         SVProgressHUD.show()
         
         // 保存用のkey発行
-        guard let key = self.firebaseData?.database.childByAutoId().key else {
+        guard let key = firebaseData?.database.childByAutoId().key else {
             print("DEBUG_PRINT: keyの発行に失敗")
             SVProgressHUD.showError(withStatus: "投稿に失敗しました")
             return
@@ -171,7 +171,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let data = image.jpegData(compressionQuality: 0.8)! as Data
         
         // Storageに画像を保存
-        self.firebaseData.storage.child(key + Const.ImageExtension)
+        firebaseData.storage.child(key + Const.ImageExtension)
             .rx
             .putData(data)
             .subscribe(onNext: { metadata in
@@ -183,7 +183,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     private func setValueDatabase(key: String) {
-        self.firebaseData.storage.child(key + Const.ImageExtension)
+        firebaseData.storage.child(key + Const.ImageExtension)
             .rx
             .downloadURL()
             .subscribe(onNext: { url in
@@ -245,7 +245,7 @@ extension CGRect {
 extension UIImage {
     func cropping(to rect: CGRect) -> UIImage? {
         let croppingRect: CGRect = imageOrientation.isLandscape ? rect.switched : rect
-        guard let cgImage: CGImage = self.cgImage?.cropping(to: croppingRect) else { return nil }
+        guard let cgImage: CGImage = cgImage?.cropping(to: croppingRect) else { return nil }
         let cropped: UIImage = UIImage(cgImage: cgImage, scale: scale, orientation: imageOrientation)
         return cropped
     }
