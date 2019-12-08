@@ -53,8 +53,8 @@ service firebase.storage {
 ### CocoaPods
 1. CocoaPodsのインストール
 ```
-$ sudo gem install cocoapods
-$ pod setup
+sudo gem install cocoapods
+pod setup
 ```
 2. ```pod install```コマンドでライブラリのインストール
 
