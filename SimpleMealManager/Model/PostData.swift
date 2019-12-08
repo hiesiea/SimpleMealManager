@@ -18,22 +18,22 @@ class PostData: NSObject {
     private var image: UIImage?
     
     init(snapshot: DataSnapshot) {
-        self.id = snapshot.key
+        id = snapshot.key
         print("snapshot.key = \(snapshot.key)")
         
         let valueDictionary = snapshot.value as! [String: Any]
         
-        self.imageUrl = valueDictionary["imageUrl"] as? String
-        self.title = valueDictionary["title"] as? String
-        self.comment = valueDictionary["comment"] as? String
+        imageUrl = valueDictionary["imageUrl"] as? String
+        title = valueDictionary["title"] as? String
+        comment = valueDictionary["comment"] as? String
         
         let time = valueDictionary["time"] as? String
-        self.date = Date(timeIntervalSinceReferenceDate: TimeInterval(time!)!)
+        date = Date(timeIntervalSinceReferenceDate: TimeInterval(time!)!)
     }
     
     // URLから実データを生成
     func getUIImage() -> UIImage? {
-        if self.image == nil {
+        if image == nil {
             let url = URL(string: imageUrl!)
             do {
                 let data = try Data(contentsOf: url!)
@@ -43,12 +43,12 @@ class PostData: NSObject {
                 return nil
             }
         }
-        return self.image
+        return image
     }
     
     // フォーマット済みの日付を返す
     func formatDatetoString() -> String {
-        if self.date == nil {
+        if date == nil {
             return ""
         }
         
@@ -56,19 +56,19 @@ class PostData: NSObject {
         f.dateStyle = .long
         f.timeStyle = .medium
         f.locale = Locale(identifier: "ja_JP")
-        return f.string(from: self.date!)
+        return f.string(from: date!)
     }
     
     // シェア用のメッセージを返す
     func getShareMessage() -> String {
         var shareMessage = String()
-        if !self.title!.isEmpty {
-            shareMessage.append("料理名：\(self.title!)\n")
+        if title!.isEmpty {
+            shareMessage.append("料理名：\(title!)\n")
         }
-        if !self.comment!.isEmpty {
-            shareMessage.append("コメント：\(self.comment!)\n")
+        if comment!.isEmpty {
+            shareMessage.append("コメント：\(comment!)\n")
         }
-        shareMessage.append(self.imageUrl!)
+        shareMessage.append(imageUrl!)
         return shareMessage
     }
 }
