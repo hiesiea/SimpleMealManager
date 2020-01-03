@@ -54,6 +54,7 @@
 		1E4F3E7435565A975B2C143A /* Pods_SimpleMealManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleMealManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D8B95818D9F4A1FEC2EE77B /* Pods_SimpleMealManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleMealManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48930FE3AFC50B9F6FCBBD4B /* Pods-SimpleMealManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleMealManagerTests.release.xcconfig"; path = "Target Support Files/Pods-SimpleMealManagerTests/Pods-SimpleMealManagerTests.release.xcconfig"; sourceTree = "<group>"; };
+		600438FA23BF742F000B077C /* かんたん食事管理.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "かんたん食事管理.entitlements"; sourceTree = "<group>"; };
 		601E90CC232D455D00143810 /* FirebaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseData.swift; sourceTree = "<group>"; };
 		6038B18523252B3E001F22F1 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		6038B18623252B3E001F22F1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +197,7 @@
 		604CAAF6231A7FA400B04451 /* SimpleMealManager */ = {
 			isa = PBXGroup;
 			children = (
+				600438FA23BF742F000B077C /* かんたん食事管理.entitlements */,
 				604CAAF7231A7FA400B04451 /* AppDelegate.swift */,
 				604CAAFB231A7FA400B04451 /* Main.storyboard */,
 				604CAAFE231A7FA500B04451 /* Assets.xcassets */,
@@ -647,7 +649,10 @@
 			baseConfigurationReference = 75F65D0AA1B6E015E13FC515 /* Pods-SimpleMealManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SimpleMealManager/かんたん食事管理.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B6VWA2QJ88;
 				INFOPLIST_FILE = SimpleMealManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -657,6 +662,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kmdhtsh.SimpleMealManager;
 				PRODUCT_NAME = "かんたん食事管理";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -667,7 +673,10 @@
 			baseConfigurationReference = 783E4DBD22A7993F78064949 /* Pods-SimpleMealManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SimpleMealManager/かんたん食事管理.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B6VWA2QJ88;
 				INFOPLIST_FILE = SimpleMealManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -677,6 +686,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kmdhtsh.SimpleMealManager;
 				PRODUCT_NAME = "かんたん食事管理";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
