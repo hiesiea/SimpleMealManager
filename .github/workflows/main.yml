@@ -21,4 +21,4 @@ jobs:
       if: steps.cache-cocoapods.outputs.cache-hit != 'true'
       run: pod install
     - name: Build
-      run: xcodebuild clean build -workspace SimpleMealManager.xcworkspace -scheme SimpleMealManager -destination 'platform=iOS Simulator,OS=latest,name=iPhone 11' 
+      run: xcodebuild build -workspace SimpleMealManager.xcworkspace -scheme SimpleMealManager -destination 'platform=iOS Simulator,OS=latest,name=iPhone 11' 
