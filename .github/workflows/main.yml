@@ -9,17 +9,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
     - name: Select Xcode version # Xcode 11.3_beta を使う
       run: sudo xcode-select -s '/Applications/Xcode_11.3_beta.app/Contents/Developer'
-    - name: Show Xcode version
-      run: xcodebuild -version
-    - name: CocoaPods
+    - uses: actions/cache@v1
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-pods-
+    - name: Pod Install
+      if: steps.cache-cocoapods.outputs.cache-hit != 'true'
       run: pod install
-    - name: Build # シミュレーター向けにビルド
+    - name: Build
       run: xcodebuild -sdk iphonesimulator -configuration Debug build 
