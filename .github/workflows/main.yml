@@ -1,0 +1,23 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
+    - name: Select Xcode version # Xcode 11.3_beta を使う
+      run: sudo xcode-select -s '/Applications/Xcode_11.3_beta.app/Contents/Developer'
+    - name: Show Xcode version
+      run: xcodebuild -version
+    - name: Build # シミュレーター向けにビルド
+      run: xcodebuild -sdk iphonesimulator -configuration Debug build 
