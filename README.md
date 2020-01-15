@@ -4,6 +4,14 @@
 
 [‎「かんたん食事管理」をApp Storeで](https://apps.apple.com/jp/app/%E3%81%8B%E3%82%93%E3%81%9F%E3%82%93%E9%A3%9F%E4%BA%8B%E7%AE%A1%E7%90%86/id1482117628)
 
+## ライブラリ、FW
+
+- [Firebase(Authentication、Realtime Database、Storage)](https://firebase.google.com/?hl=ja)
+- [RxSwiftCommunity/RxFirebase: RxSwift extensions for Firebase](https://github.com/RxSwiftCommunity/RxFirebase)
+- [eggswift/ESTabBarController: ESTabBarController is a Swift model for customize UI, badge and adding animation to tabbar items. Support lottie!](https://github.com/eggswift/ESTabBarController)
+- [SVProgressHUD/SVProgressHUD: A clean and lightweight progress HUD for your iOS and tvOS app.](https://github.com/SVProgressHUD/SVProgressHUD)
+- [dzenbot/DZNEmptyDataSet: A drop-in UITableView/UICollectionView superclass category for showing empty datasets whenever the view has no content to display](https://github.com/dzenbot/DZNEmptyDataSet)
+
 ## 前提条件
 
 - Xcodeのバージョンが最新（2020年1月時点で11.3）であること
