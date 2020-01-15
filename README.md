@@ -1,5 +1,9 @@
 # SimpleMealManager
 
+## App Store
+
+[‎「かんたん食事管理」をApp Storeで](https://apps.apple.com/jp/app/%E3%81%8B%E3%82%93%E3%81%9F%E3%82%93%E9%A3%9F%E4%BA%8B%E7%AE%A1%E7%90%86/id1482117628)
+
 ## 前提条件
 
 - Xcodeのバージョンが最新（2020年1月時点で11.3）であること
